@@ -4,15 +4,20 @@ import "./Navbar.css";
 
 const Navbar = () => {
   const [Search, setSearch] = useState(false);
+  const [Sidebar, setSidebar] = useState(false);
+
+  const toggleSidebar = () => {
+    setSidebar((prevSidebar) => !prevSidebar);
+  };
 
   return (
     <>
-      <div className="navbar">
+      <div className={Sidebar ? "navbar active" : "navbar"}>
         <div className="nblg">LearnProg</div>
         <div className="nbrg">
           {/* Usa una función de flecha para actualizar el estado correctamente */}
           <FaSistrix onClick={() => setSearch(true)} />
-          <FaBars />
+          <FaBars onClick={toggleSidebar} />
         </div>
         {/* Lo mismo aquí, para cerrar la pantalla de búsqueda */}
         <div
@@ -26,6 +31,8 @@ const Navbar = () => {
             onClick={(e) => e.stopPropagation()}
           />
         </div>
+
+        <div className={Sidebar ? "sidebar active" : "sidebar"}></div>
       </div>
     </>
   );
