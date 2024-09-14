@@ -19,6 +19,7 @@ const Navbar = () => {
           <FaSistrix onClick={() => setSearch(true)} />
           <FaBars onClick={toggleSidebar} />
         </div>
+
         {/* Lo mismo aquí, para cerrar la pantalla de búsqueda */}
         <div
           className={Search ? "sscreen active" : "sscreen"}
@@ -31,8 +32,10 @@ const Navbar = () => {
             onClick={(e) => e.stopPropagation()}
           />
         </div>
-
-        <div className={Sidebar ? "sidebar active" : "sidebar"}></div>
+        <div className={Sidebar ? "sidebar active" : "sidebar"}>
+          <div className="sdbaroption">Cursos</div>
+          <div className="sdbaroption">Profesores</div>
+        </div>
       </div>
     </>
   );
