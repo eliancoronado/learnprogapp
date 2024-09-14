@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Days+One&family=Fira+Code:wght@300..700&family=Lalezar&display=swap');
+/*Fuentes*/
+
+/*
+    font-family: "Lalezar", system-ui;
+    font-family: "Fira Code", monospace;
+    font-family: "Days One", sans-serif;
+*/
+
+/*CSS*/
+
+/*Va conforme al codigo Home.jsx y conforme la estructura del mismo*/
+
+.home{
+    width: 100%;
+    height: 92vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding-top: 4rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.home h1{
+    font-size: 4vh;
+    color: #E9BC5A;
+    font-family: "Fira Code", monospace;
+}
+
+.home h3{   
+    font-size: 2.5vh;
+    color: #fff;
+    font-family: "Lalezar", system-ui;
+    font-weight: 300;
+    margin-top: 1vh;
+}
+
+.home h4{   
+    font-size: 2vh;
+    color: #8199AC;
+    font-family: "Lalezar", system-ui;
+    font-weight: 300;
+    margin-top: 1vh;
+}
+
+.home h5{   
+    font-size: 2.1vh;
+    color: #fff;
+    font-family: "Days One", sans-serif;
+    font-weight: 300;
+    margin-top: 2.5vh;
+}
+
+.home .counter{   
+    font-size: 1.6vh;
+    color: #E9BC5A;
+    font-family: "Days One", sans-serif;
+    font-weight: 300;
+    margin-top: 1.5vh;
+}
+
+.home button{
+    padding: 0.7rem 1.2rem;
+    border-radius: 8px;
+    font-size: 2.2vh;
+    color: #5E4B20;
+    font-family: "Lalezar", system-ui;
+    font-weight: 400;
+    background-color: #FFD475;
+    border: none;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+    margin-top: 2vh;
+}
+
+.home p{
+    font-size: 1.7vh;
+    color: #6B9DC6;
+    font-family: "Lalezar", system-ui;
+    font-weight: 400;
+    margin-top: 1vh;
+}

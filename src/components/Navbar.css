@@ -1,3 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Days+One&family=Fira+Code:wght@300..700&family=Lalezar&display=swap');
+/*Fuentes*/
+
+/*
+    font-family: "Lalezar", system-ui;
+    font-family: "Fira Code", monospace;
+    font-family: "Days One", sans-serif;
+*/
+
+/*CSS*/
+
+/*Va conforme al codigo Nabvar.jsx y conforme la estructura del mismo*/
+
+/*Este es el Navbar que se puede cambiar*/
+
 .navbar{
     width: 100%;
     height: 8vh;
@@ -6,5 +21,72 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 0.8rem;
+    padding: 0 0.9rem;
+    transition: background-color 0.3s ease;
+}   
+
+.navbar.navbar-scroll {
+    background-color: #1B2832; /* Cambia esto al color que prefieras */
+    transition: background-color 0.3s ease;
+}
+
+/*Este es el CSS del logo que se puede cambiar*/
+
+.navbar .nblg{
+    height: 100%;
+    font-size: 3.8vh;
+    font-family: "Lalezar", system-ui;
+    display: flex;
+    align-items: center;
+}
+
+/*Este es el CSS de los iconos del Navbar se puede cambiar*/
+
+.navbar .nbrg{
+    height: 100%;
+    font-size: 3.5vh;
+    display: flex;
+    align-items: center;
+    gap: 23px;
+}
+
+
+
+.sscreen{
+    width: 0.01px;
+    height: 0.01px;
+    backdrop-filter: blur(1px);
+    background-color: #ffffffa2;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all .4s ease-out;
+    border-radius: 30px;
+    overflow: hidden;
+}
+.sscreen.active{
+    width: 100%;
+    height: 100vh;
+    backdrop-filter: blur(5px);
+    background-color: #ffffffa2;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(0, 0);
+    transition: all .4s ease-in;
+    border-radius: 0;
+    
+    padding: 1rem;
+}
+
+.sscreen.active input{
+    width: 100%;
+    height: 8vh;
+    border-radius: 8px;
+    background-color: #1B2832;
+    font-family: "Days One", sans-serif;
+    color: #2F414F;
+    padding-left: 10px;
+    font-size: 2.3vh;
 }
