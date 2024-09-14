@@ -96,7 +96,7 @@
 
 .sidebar{
     width: 0.01px;
-    bottom: 0;
+    top: 8vh;
     right: 0;
     height: 92vh;
     background-color: black;
@@ -108,7 +108,7 @@
 
 .sidebar.active{
     width: 85%;
-    bottom: 0;
+    top: 8vh;
     right: 0;
     height: 92vh;
     background-color: #0D161C;
