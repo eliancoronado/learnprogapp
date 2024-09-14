@@ -13,7 +13,9 @@ const Navbar = () => {
   return (
     <>
       <div className={Sidebar ? "navbar active" : "navbar"}>
-        <div className="nblg">LearnProg</div>
+        <div className="nblg">
+          <a href="/">LearnProg</a>
+        </div>
         <div className="nbrg">
           {/* Usa una función de flecha para actualizar el estado correctamente */}
           <FaSistrix onClick={() => setSearch(true)} />
@@ -33,7 +35,9 @@ const Navbar = () => {
           />
         </div>
         <div className={Sidebar ? "sidebar active" : "sidebar"}>
-          <div className="sdbaroption">Cursos</div>
+          <div className="sdbaroption">
+            <a href="/courses">Cursos</a>
+          </div>
           <div className="sdbaroption">Profesores</div>
         </div>
       </div>
