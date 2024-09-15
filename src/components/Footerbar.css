@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Days+One&family=Fira+Code:wght@300..700&family=Lalezar&display=swap');
+/*Fuentes*/
+
+/*
+    font-family: "Lalezar", system-ui;
+    font-family: "Fira Code", monospace;
+    font-family: "Days One", sans-serif;
+*/
+
+/*CSS*/
+
+.footerbar{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    height: 8vh;
+    background-color: #0D161C; 
+    padding: 0 0.7rem;
+    gap: 5px;
+}
+
+.fboption{
+    width: 100%;
+    height: 100%;
+    font-size: 1.4vh;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 300;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.fboption{
+    width: 100%;
+    height: 100%;
+    font-size: 1.4vh;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 300;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all .4s ease;
+}
+
+.fboption:hover{
+    width: 100%;
+    height: 100%;
+    font-size: 1.4vh;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 300;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all .4s ease;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+}
+
+.fboption .i{
+    font-size: 2vh;
+}

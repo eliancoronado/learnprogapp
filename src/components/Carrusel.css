@@ -1,3 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Days+One&family=Fira+Code:wght@300..700&family=Lalezar&display=swap');
+/*Fuentes*/
+
+/*
+    font-family: "Lalezar", system-ui;
+    font-family: "Fira Code", monospace;
+    font-family: "Days One", sans-serif;
+*/
+
+/*CSS*/
+
+
+
+.course-page{
+  width: 100%;
+  height: 84vh;
+}
+
 .carousel-container {
     position: relative;
     width: 100%;
@@ -78,3 +96,57 @@
     background-color: #333;
   }
   
+  .corstxt{
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 0 1rem;
+  }
+
+  .corstxt a{
+    all: inherit;
+  }
+
+  .corstxt .prx{
+    padding: 0.1rem 0.8rem;
+    color: #0F1811 90%;
+    background-color: #9EF6B1;
+    border-radius: 8px;
+    font-size: 3vh;
+    font-family: "Lalezar", system-ui;
+    margin-top: 2vh;
+}
+
+.corstxt h1{
+  font-size: 3.5vh;
+  font-family: "Lalezar", system-ui;
+  margin-top: 1.5vh;
+  color: white;
+  font-weight: 200;
+  letter-spacing: 0.5px;
+  text-align: center;
+}
+.corstxt p{
+  font-size: 2.2vh;
+  font-family: "Lalezar", system-ui;
+  margin-top: 1.5vh;
+  color: #C1C4C7;
+  font-weight: 100;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+.corstxt button{
+  width: 100%;
+  padding: 0.6rem 0;
+  margin-top: 5vh;
+  border-radius: 8px;
+  color: white;
+  font-size: 2vh;
+  font-family: "Days One", sans-serif;
+  font-weight: 300;
+  background-color: #35a9fd;
+  border: none;
+}
