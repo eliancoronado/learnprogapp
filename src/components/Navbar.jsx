@@ -21,9 +21,9 @@ const Navbar = () => {
         </div>
 
         <div className={Sidebar ? "sidebar active" : "sidebar"}>
-          <div className="sdbaroption">
-            <a href="/courses">Cursos</a>
-          </div>
+          <a href="/courses">
+            <div className="sdbaroption">Cursos</div>
+          </a>
           <a href="/teachers">
             <div className="sdbaroption">Profesores</div>
           </a>

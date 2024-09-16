@@ -7,13 +7,11 @@ const Teacherspage = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await fetch(
-          "https://api-backend-learnprog.onrender.com/api/users"
-        ); // URL de la API de usuarios
+        const response = await fetch("http://localhost:5000/api/auth/teachers"); // URL de la API de profesores
         const data = await response.json();
-        setUsers(data); // Guardar los datos de los usuarios en el estado
+        setUsers(data); // Guardar los datos de los profesores en el estado
       } catch (error) {
-        console.error("Error al obtener los usuarios:", error);
+        console.error("Error al obtener los profesores:", error);
       }
     };
 
@@ -27,11 +25,18 @@ const Teacherspage = () => {
         <div className="tchrsimgwr">
           {users.map((user, index) => (
             <a key={index} href={`/profile/${user._id}`}>
-              {" "}
-              {/* Usa la ruta correcta para el perfil */}
               <div className="tchrop">
-                <img src={user.image} alt={user.name} />
-                <h3>{user.name}</h3>
+                <img
+                  src={
+                    user.profileImageUrl
+                      ? user.profileImageUrl
+                      : "/images/default-profile.png"
+                  }
+                  alt={user.username ? user.username : "Profesor"}
+                />
+                <h3>
+                  {user.username ? user.username : "Nombre no disponible"}
+                </h3>
               </div>
             </a>
           ))}

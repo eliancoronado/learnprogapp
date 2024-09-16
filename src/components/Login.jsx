@@ -1,52 +1,51 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import "./styles.css"; // Asegúrate de que la ruta sea correcta
+import "./style.css";
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+
   const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
-      const response = await axios.post(
-        "https://api-backend-learnprog.onrender.com/api/login",
-        {
-          email,
-          password,
-        }
+      const res = await axios.post(
+        "http://localhost:5000/api/auth/login",
+        formData
       );
-      localStorage.setItem("token", response.data.token);
-      navigate("/home"); // Redirige al usuario a la página de inicio
-    } catch (err) {
-      console.error("Error al iniciar sesión:", err);
+      localStorage.setItem("token", res.data.token);
+      navigate("/home");
+    } catch (error) {
+      console.error("Error en el login", error);
     }
   };
 
   return (
-    <div>
-      <h2>Iniciar sesión</h2>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="email"
-          placeholder="Correo electrónico"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
+    <form onSubmit={handleSubmit}>
+      <div>
+        <label>Email</label>
+        <input type="email" name="email" onChange={handleChange} required />
+      </div>
+      <div>
+        <label>Password</label>
         <input
           type="password"
-          placeholder="Contraseña"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          name="password"
+          onChange={handleChange}
           required
         />
-        <button type="submit">Iniciar sesión</button>
-      </form>
-    </div>
+      </div>
+      <button type="submit">Login</button>
+    </form>
   );
 };
 

@@ -17,20 +17,20 @@
 }
 
 .carousel-container {
-    position: relative;
-    width: 100%;
-    max-width: 600px;
-    margin: auto;
-    overflow: hidden;
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: auto; /* Ajusta la altura según tu diseño */
-    background-size: cover;
-    background-position: center; /* Aplica el filtro de desenfoque al fondo */
-    transition: background-image 1s ease-in-out; /* Transición suave para el cambio de fondo */
-  }
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+  overflow: hidden;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Ajusta la altura según tu diseño */
+  background-size: cover;
+  background-position: center;
+  backdrop-filter: blur(5px); /* Aplica el filtro de desenfoque al fondo */
+  transition: background-image 1s ease-in-out; /* Transición suave para el cambio de fondo */
+}
   
   .carousel-image {
     width: 100%;
@@ -55,6 +55,7 @@
     top: 50%;
     width: 100%;
     display: flex;
+    align-items: center;
     justify-content: space-between;
     transform: translateY(-50%);
     z-index: 3;
@@ -64,6 +65,8 @@
     background-color: rgba(0, 0, 0, 0.5);
     color: white;
     border: none;
+    width: auto;
+    height: auto;
     padding: 0.6rem 1rem;
     cursor: pointer;
     border-radius: 50%;

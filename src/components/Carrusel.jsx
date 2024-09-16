@@ -13,7 +13,7 @@ const Carrousel = () => {
   const [currentBtn, setCurrentBtn] = useState(0);
 
   useEffect(() => {
-    fetch("http://localhost:4000/api/cursos")
+    fetch("http://localhost:5000/api/auth/cursos")
       .then((response) => response.json())
       .then((cursos) => {
         if (cursos) {
