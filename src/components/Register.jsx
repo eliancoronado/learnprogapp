@@ -30,7 +30,10 @@ const Register = () => {
     form.append("image", formData.image);
 
     try {
-      const res = await axios.post("/register", form);
+      const res = await axios.post(
+        "https://api-backend-learnprog.onrender.com/register",
+        form
+      );
       console.log("Usuario registrado:", res.data);
 
       // Redirigir a /home después del registro exitoso
