@@ -22,15 +22,18 @@ const Courses = () => {
   return (
     <>
       <div className="courses-page-mini">
-        {images.map((image, index) => (
-          <a key={index} href={`/curso?=${btns[index]}`}>
-            <img
-              src={image}
-              alt={`Slide ${index + 1}`}
-              className="course-image"
-            />
-          </a>
-        ))}
+        <h1>Todos los cursos</h1>
+        <div className="courwr">
+          {images.map((image, index) => (
+            <a key={index} href={`/curso?=${btns[index]}`}>
+              <img
+                src={image}
+                alt={`Slide ${index + 1}`}
+                className="course-image"
+              />
+            </a>
+          ))}
+        </div>
       </div>
     </>
   );
