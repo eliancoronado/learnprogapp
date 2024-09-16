@@ -31,8 +31,9 @@ const Register = () => {
 
     try {
       const res = await axios.post(
-        "https://api-backend-learnprog.onrender.com/register",
-        form
+        "https://api-backend-learnprog.onrender.com/api/auth/register", // Asegúrate de que esta es la URL correcta
+        form,
+        { headers: { "Content-Type": "multipart/form-data" } } // Configura el header para multipart/form-data
       );
       console.log("Usuario registrado:", res.data);
 
@@ -40,6 +41,7 @@ const Register = () => {
       navigate("/home");
     } catch (err) {
       console.error(err.response.data);
+      // Considera mostrar un mensaje de error al usuario aquí
     }
   };
 
