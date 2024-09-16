@@ -8,7 +8,7 @@ const Teacherspage = () => {
     const fetchUsers = async () => {
       try {
         const response = await fetch(
-          "https://api-backend-learnprog.onrender.com/api/auth/api/users"
+          "https://api-backend-learnprog.onrender.com/api/users"
         ); // URL de la API de usuarios
         const data = await response.json();
         setUsers(data); // Guardar los datos de los usuarios en el estado
