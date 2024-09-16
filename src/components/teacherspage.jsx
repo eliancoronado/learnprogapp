@@ -1,30 +1,38 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./teacherspage.css";
 
 const Teacherspage = () => {
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        const response = await fetch("/api/users"); // URL de la API de usuarios
+        const data = await response.json();
+        setUsers(data); // Guardar los datos de los usuarios en el estado
+      } catch (error) {
+        console.error("Error al obtener los usuarios:", error);
+      }
+    };
+
+    fetchUsers();
+  }, []);
+
   return (
     <>
       <div className="teacherpage">
         <h1>Profesores</h1>
         <div className="tchrsimgwr">
-          <a href="/johan">
-            <div className="tchrop">
-              <img
-                src="https://i.postimg.cc/3x6Fx271/Whats-App-Image-2024-09-16-at-1-50-45-PM.jpg"
-                alt=""
-              />
-              <h3>Johan Mendoza</h3>
-            </div>
-          </a>
-          <a href="/heydi">
-            <div className="tchrop">
-              <img
-                src="https://i.postimg.cc/pXZpCjdZ/Whats-App-Image-2024-09-16-at-2-18-51-PM.jpg"
-                alt=""
-              />
-              <h3>Heydi Ramos</h3>
-            </div>
-          </a>
+          {users.map((user, index) => (
+            <a key={index} href={`/profile/${user._id}`}>
+              {" "}
+              {/* Usa la ruta correcta para el perfil */}
+              <div className="tchrop">
+                <img src={user.image} alt={user.name} />
+                <h3>{user.name}</h3>
+              </div>
+            </a>
+          ))}
         </div>
       </div>
     </>

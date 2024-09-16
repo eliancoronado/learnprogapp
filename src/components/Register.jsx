@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom"; // Importar useNavigate
 import "./style.css";
 
 const Register = () => {
@@ -9,6 +10,8 @@ const Register = () => {
     password: "",
     image: null,
   });
+
+  const navigate = useNavigate(); // Inicializar useNavigate
 
   const handleChange = (e) => {
     if (e.target.name === "image") {
@@ -27,8 +30,11 @@ const Register = () => {
     form.append("image", formData.image);
 
     try {
-      const res = await axios.post("/api/auth/register", form);
+      const res = await axios.post("/register", form);
       console.log("Usuario registrado:", res.data);
+
+      // Redirigir a /home después del registro exitoso
+      navigate("/home");
     } catch (err) {
       console.error(err.response.data);
     }
