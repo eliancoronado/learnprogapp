@@ -1,50 +1,49 @@
 import React, { useState } from "react";
 import axios from "axios";
-import "./style.css";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-  });
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     try {
-      const res = await axios.post("/api/auth/login", formData);
-      console.log("Usuario autenticado:", res.data.token);
-      localStorage.setItem("token", res.data.token); // Guardar token en localStorage
+      const response = await axios.post(
+        "https://api-backend-learnprog.onrender.com/api/login",
+        {
+          email,
+          password,
+        }
+      );
+      localStorage.setItem("token", response.data.token);
+      navigate("/home"); // Redirige al usuario a la página de inicio
     } catch (err) {
-      console.error(err.response.data);
+      console.error("Error al iniciar sesión:", err);
     }
   };
 
   return (
-    <div className="form-container">
-      <h2>Login</h2>
+    <div>
+      <h2>Iniciar sesión</h2>
       <form onSubmit={handleSubmit}>
         <input
           type="email"
-          name="email"
           placeholder="Correo electrónico"
-          onChange={handleChange}
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
           required
         />
         <input
           type="password"
-          name="password"
           placeholder="Contraseña"
-          onChange={handleChange}
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
           required
         />
         <button type="submit">Iniciar sesión</button>
-        <p>
-          ¿No tienes cuenta? <a href="/register">Regístrate</a>
-        </p>
       </form>
     </div>
   );
