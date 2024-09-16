@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import "./style.css";
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -34,31 +35,37 @@ const Register = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        name="name"
-        placeholder="Nombre"
-        onChange={handleChange}
-        required
-      />
-      <input
-        type="email"
-        name="email"
-        placeholder="Correo electrónico"
-        onChange={handleChange}
-        required
-      />
-      <input
-        type="password"
-        name="password"
-        placeholder="Contraseña"
-        onChange={handleChange}
-        required
-      />
-      <input type="file" name="image" onChange={handleChange} required />
-      <button type="submit">Registrarse</button>
-    </form>
+    <div className="form-container">
+      <h2>Registro</h2>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          name="name"
+          placeholder="Nombre"
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="email"
+          name="email"
+          placeholder="Correo electrónico"
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="password"
+          name="password"
+          placeholder="Contraseña"
+          onChange={handleChange}
+          required
+        />
+        <input type="file" name="image" onChange={handleChange} required />
+        <button type="submit">Registrarse</button>
+        <p>
+          ¿Ya tienes una cuenta? <a href="/login">Inicia sesión</a>
+        </p>
+      </form>
+    </div>
   );
 };
 

@@ -1,0 +1,96 @@
+/* Estilos Generales */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  /* Contenedor del formulario */
+  .form-container {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  /* Encabezado del formulario */
+  .form-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  /* Inputs y Botones */
+  .form-container input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+  }
+  
+  .form-container input[type="file"] {
+    padding: 5px;
+  }
+  
+  .form-container button {
+    width: 100%;
+    padding: 12px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+  }
+  
+  .form-container button:hover {
+    background-color: #218838;
+  }
+  
+  /* Estilo para enlaces de redirección */
+  .form-container p {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #555;
+  }
+  
+  .form-container p a {
+    color: #28a745;
+    text-decoration: none;
+  }
+  
+  .form-container p a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Media Queries para pantallas pequeñas */
+  @media (max-width: 600px) {
+    .form-container {
+      padding: 20px;
+    }
+  
+    .form-container h2 {
+      font-size: 24px;
+    }
+  
+    .form-container input {
+      font-size: 14px;
+    }
+  
+    .form-container button {
+      font-size: 14px;
+    }
+  }
+  
