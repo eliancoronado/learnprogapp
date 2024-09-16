@@ -1,31 +1,34 @@
 import React, { useState, useEffect } from "react";
 import "./Carrusel.css"; // Asegúrate de importar el archivo CSS
 
-const images = [
-  "https://i.postimg.cc/Z5YC1vQ0/css.png",
-  "https://i.postimg.cc/DyBnFP8f/mit-2.png",
-  "https://i.postimg.cc/FsCMdZSP/Figma.png",
-  "https://i.postimg.cc/HWy84G8L/Frame-1-11.png",
-];
-const titles = [
-  "Curso de CSS desde cero (2024)",
-  "Curso de App Inventor 2 desde cero (2024)",
-  "Curso de Figma desde cero (2024)",
-  "Curso de ExeLearning desde cero (2024)",
-];
-const descs = [
-  "Domina el lenguaje que hace hermosa la web con el MEJOR CURSO EN ESPAÑOL.",
-  "Creación de aplicaciones móviles impactantes, sin necesidad de experiencia previa en programación.",
-  "Explora el mundo del diseño de interfaces con nuestro curso de UX/UI usando Figma.",
-  "Este curso de eXeLearning está diseñado para principiantes que desean crear y publicar contenidos educativos en formato web.",
-];
-const btns = ["curso1", "curso2", "curso3", "curso4"];
-
 const Carrousel = () => {
+  const [images, setImages] = useState([]);
+  const [titles, setTitles] = useState([]);
+  const [descs, setDescs] = useState([]);
+  const [btns, setBtns] = useState([]);
+
   const [currentIndex, setCurrentIndex] = useState(0);
   const [currentText, setCurrentText] = useState(0);
   const [currentTitle, setCurrentTitle] = useState(0);
   const [currentBtn, setCurrentBtn] = useState(0);
+
+  useEffect(() => {
+    fetch("http://localhost:4000/api/cursos")
+      .then((response) => response.json())
+      .then((cursos) => {
+        if (cursos) {
+          const fetchedImages = cursos.map((curso) => curso.image_url); // Extraer las URLs de imágenes
+          setImages(fetchedImages); // Guardarlas en el estado
+          const fetchedTitles = cursos.map((curso) => curso.titulo); // Extraer las URLs de imágenes
+          setTitles(fetchedTitles); // Guardarlas en el estado
+          const fetchedDecs = cursos.map((curso) => curso.descripcion); // Extraer las URLs de imágenes
+          setDescs(fetchedDecs); // Guardarlas en el estado
+          const fetchedClaves = cursos.map((curso) => curso.clave); // Extraer las URLs de imágenes
+          setBtns(fetchedClaves); // Guardarlas en el estado
+        }
+      })
+      .catch((error) => console.error("Error al obtener los cursos:", error));
+  }, []);
 
   // Función para cambiar a la imagen siguiente
   const nextImage = () => {
@@ -61,7 +64,7 @@ const Carrousel = () => {
 
     // Limpiar el intervalo cuando el componente se desmonte o cuando se actualice
     return () => clearInterval(interval);
-  }, [currentIndex, currentText, currentTitle, currentBtn]);
+  }, [currentIndex, currentTitle, currentText, currentBtn]);
 
   return (
     <div className="course-page">

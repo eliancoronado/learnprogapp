@@ -27,10 +27,12 @@ const FootBar = () => {
   return (
     <>
       <div className="footerbar">
-        <div className="fboption">
-          <FaGrip className="i" />
-          Cursos
-        </div>
+        <a href="/courses">
+          <div className="fboption">
+            <FaGrip className="i" />
+            Cursos
+          </div>
+        </a>
         <div className="fboption">
           <FaUsers className="i" />
           Comunidad

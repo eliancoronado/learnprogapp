@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Days+One&family=Fira+Code:wght@300..700&family=Lalezar&display=swap');
+/*Fuentes*/
+
+/*
+    font-family: "Lalezar", system-ui;
+    font-family: "Fira Code", monospace;
+    font-family: "Days One", sans-serif;
+*/
+
+/*CSS*/
+
+.courses-page-mini {
+    width: 100%;
+    max-height: 84vh;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas del mismo ancho */
+    gap: 8px; /* Espacio entre las imágenes */
+    justify-items: center; /* Centrar las imágenes horizontalmente */
+    align-items: start; /* Alinearlas al inicio verticalmente */
+    padding: 2rem 1rem;
+  }
+  
+  .courses-page-mini img {
+    width: 100%; /* Que la imagen ocupe todo el ancho disponible */
+    height: auto; /* Mantener proporciones */
+    object-fit: cover; /* Ajusta la imagen para que llene el contenedor sin distorsionarse */
+    border-radius: 8px; /* Redondea los bordes de la imagen */
+  }
+  
