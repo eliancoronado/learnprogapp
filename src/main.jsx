@@ -4,13 +4,16 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import App from "./App.jsx";
 import "./index.css";
 import CursoPage from "./pages/cursos/CursoPage.jsx";
+import Teachers from "./pages/teachers/teachers.jsx";
+import Register from "./components/Register.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <Router>
       <Routes>
-        <Route path="/" element={<App />} />
+        <Route path="/" element={<Register />} />
         <Route path="/courses" element={<CursoPage />} />
+        <Route path="/teachers" element={<Teachers />} />
       </Routes>
     </Router>
   </StrictMode>

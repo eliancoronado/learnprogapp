@@ -24,7 +24,9 @@ const Navbar = () => {
           <div className="sdbaroption">
             <a href="/courses">Cursos</a>
           </div>
-          <div className="sdbaroption">Profesores</div>
+          <a href="/teachers">
+            <div className="sdbaroption">Profesores</div>
+          </a>
         </div>
       </div>
     </>
