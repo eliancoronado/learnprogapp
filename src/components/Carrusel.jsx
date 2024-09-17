@@ -13,7 +13,7 @@ const Carrousel = () => {
   const [currentBtn, setCurrentBtn] = useState(0);
 
   useEffect(() => {
-    fetch("https://api-backend-learnprog-1.onrender.com/api/auth/cursos")
+    fetch("http://localhost:5000/api/auth/cursos")
       .then((response) => response.json())
       .then((cursos) => {
         if (cursos) {
@@ -23,7 +23,7 @@ const Carrousel = () => {
           setTitles(fetchedTitles); // Guardarlas en el estado
           const fetchedDecs = cursos.map((curso) => curso.descripcion); // Extraer las URLs de imágenes
           setDescs(fetchedDecs); // Guardarlas en el estado
-          const fetchedClaves = cursos.map((curso) => curso.clave); // Extraer las URLs de imágenes
+          const fetchedClaves = cursos.map((curso) => curso._id); // Extraer las URLs de imágenes
           setBtns(fetchedClaves); // Guardarlas en el estado
         }
       })
@@ -109,7 +109,7 @@ const Carrousel = () => {
         <div className="prx">Tendencias</div>
         <h1>{titles[currentTitle]}</h1>
         <p>{descs[currentText]}</p>
-        <a href={`/curso?=${btns[currentBtn]}`}>
+        <a href={`/curso/${btns[currentBtn]}`}>
           <button type="button">Ver curso</button>
         </a>
       </div>

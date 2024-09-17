@@ -17,35 +17,45 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     try {
-      const res = await axios.post(
-        "https://api-backend-learnprog-1.onrender.com/api/auth/login",
-        formData
-      );
+      const res = await axios.post("http://localhost:5000/api/auth/login", {
+        email: formData.email,
+        password: formData.password,
+      });
+
       localStorage.setItem("token", res.data.token);
+      localStorage.setItem("user", JSON.stringify(res.data.user));
       navigate("/home");
     } catch (error) {
-      console.error("Error en el login", error);
+      console.error("Error en el login", error.response?.data || error);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label>Email</label>
-        <input type="email" name="email" onChange={handleChange} required />
-      </div>
-      <div>
-        <label>Password</label>
-        <input
-          type="password"
-          name="password"
-          onChange={handleChange}
-          required
-        />
-      </div>
-      <button type="submit">Login</button>
-    </form>
+    <div className="rgsterpage">
+      <form onSubmit={handleSubmit}>
+        <h1>LearnProg</h1>
+        <h3>Inicia Sesión</h3>
+        <div>
+          <label>Correo</label>
+          <input type="email" name="email" onChange={handleChange} required />
+        </div>
+        <div>
+          <label>Contraseña</label>
+          <input
+            type="password"
+            name="password"
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <button type="submit">Login</button>
+        <p>
+          No tienes una cuenta <a href="/">Registrate</a>
+        </p>
+      </form>
+    </div>
   );
 };
 

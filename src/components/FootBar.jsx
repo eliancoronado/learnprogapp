@@ -45,10 +45,12 @@ const FootBar = () => {
           <FaFile className="i" />
           Blog
         </div>
-        <div className="fboption">
-          <FaCircleUser className="i" />
-          Cuenta
-        </div>
+        <a href="/account">
+          <div className="fboption">
+            <FaCircleUser className="i" />
+            Cuenta
+          </div>
+        </a>
       </div>
 
       {/* Lo mismo aquí, para cerrar la pantalla de búsqueda */}

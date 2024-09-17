@@ -1,47 +1,102 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+@import url('https://fonts.googleapis.com/css2?family=Days+One&family=Fira+Code:wght@300..700&family=Lalezar&display=swap');
+/*Fuentes*/
 
-body {
-  font-family: 'Arial', sans-serif;
-  background-color: #f0f2f5;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+/*
+    font-family: "Lalezar", system-ui;
+    font-family: "Fira Code", monospace;
+    font-family: "Days One", sans-serif;
+*/
+
+/*CSS*/
+
+.rgsterpage{
+  width: 100%;
   height: 100vh;
+  background-color: #111b22;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1rem;
 }
 
-form {
-  background-color: #fff;
+.rgsterpage form {
+  background-color: #1b2832;
   padding: 2rem;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   width: 100%;
-  max-width: 400px;
+  max-width: 600px;
 }
 
-h2 {
+.rgsterpage form h1{
+  font-size: 3.8vh;
+  font-family: "Lalezar", system-ui;
+  color: white;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  margin-bottom: 2.4vh;
+}
+
+.rgsterpage form h3{
+  font-size: 3.8vh;
+  font-family: "Lalezar", system-ui;
+  color: white;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  margin-bottom: 1vh;
+  align-self: center;
+  text-align: center;
+}
+
+.rgsterpage form p{
+  font-size: 2vh;
+  font-family: "Lalezar", system-ui;
+  color: white;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  margin-top: 1.5vh;
+  align-self: center;
+  text-align: center;
+}
+
+.rgsterpage form p a{
+  font-size: 2vh;
+  font-family: "Lalezar", system-ui;
+  color: #007bff;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+}
+
+.rgsterpage form h2 {
   text-align: center;
   margin-bottom: 1rem;
   color: #333;
 }
 
-label {
-  font-weight: bold;
-  color: #555;
-  margin-bottom: 0.5rem;
+.rgsterpage form div label {
+  font-size: 2vh;
+  font-weight: 600;
+  color: #ffffff;
+  font-family: "Days One", sans-serif;
+  letter-spacing: 1.2px;
 }
 
 input {
   width: 100%;
   padding: 0.75rem;
   margin-bottom: 1rem;
+  margin-top: 1vh;
   border: 1px solid #ddd;
   border-radius: 5px;
   font-size: 1rem;
   transition: border-color 0.3s;
+  color: black;
+  font-size: 2vh;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+input[type="file"] {
+  color: white;
 }
 
 input:focus {
@@ -49,16 +104,19 @@ input:focus {
   outline: none;
 }
 
-button {
+.rgsterpage form button {
   width: 100%;
   padding: 0.75rem;
   background-color: #007bff;
   border: none;
   border-radius: 5px;
-  color: #fff;
-  font-size: 1rem;
   cursor: pointer;
   transition: background-color 0.3s;
+  font-size: 2vh;
+  font-weight: 500;
+  color: #ffffff;
+  font-family: "Days One", sans-serif;
+  letter-spacing: 1.2px;
 }
 
 button:hover {
@@ -88,4 +146,24 @@ button:hover {
   margin-bottom: 1rem;
   font-size: 0.9rem;
   text-align: center;
+}
+
+.rolsle{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1vh;
+  margin-bottom: 2vh;
+}
+
+.rolsle select {
+  padding: 0.5rem 0;
+  width: 100%;
+  font-size: 2vh;
+}
+
+.rolsle select option {
+  padding: 0.5rem 0;
+  width: 100%;
+  font-size: 2vh;
 }

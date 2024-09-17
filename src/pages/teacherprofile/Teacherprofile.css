@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Days+One&family=Fira+Code:wght@300..700&family=Lalezar&display=swap');
+/*Fuentes*/
+
+/*
+    font-family: "Lalezar", system-ui;
+    font-family: "Fira Code", monospace;
+    font-family: "Days One", sans-serif;
+*/
+
+/*CSS*/
+
+.tchrprfl {
+    width: 100%;
+    height: 84vh;
+    max-height: 84vh;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 1rem;
+    background-color: white;
+}
+
+.tchrprfl .tchrprfnb {
+    width: 100%;
+    height: 5vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 3vh;
+    margin-bottom: 1rem;
+}
+
+.tchrprfl .tchrprfnb a {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.tchrprfl .image {
+    width: 200px;
+    height: 200px;
+    border-radius: 100%;
+    object-fit: cover;
+    transition: all .4s ease;
+
+}
+
+.tchrprfl .image.active {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 0;
+    object-fit: cover;
+    transition: all .4s ease;
+}
+
+.tchrprfl h1 {
+    font-size: 3vh;
+    font-family: "Days One", sans-serif;
+    font-weight: 300;
+    letter-spacing: 1px;
+    margin-top: 1.5vh;
+}
+
+.tchrprfl h2 {
+    font-size: 2.5vh;
+    font-family: "Days One", sans-serif;
+    font-weight: 300;
+    letter-spacing: 1px;
+    margin-top: 4vh;
+}
+
+.tchrprfl p {
+    font-size: 2vh;
+    font-family: "Days One", sans-serif;
+    font-weight: 300;
+    letter-spacing: 1px;
+    margin-top: 1vh;
+}
+
+.tchrprfl button {
+    width: 100%;
+    padding: 0.7rem;
+    border-radius: 8px;
+    font-size: 2.5vh;
+    font-family: "Days One", sans-serif;
+    font-weight: 300;
+    letter-spacing: 1px;
+    margin-top: 2vh;
+    color: white;
+    border: none;
+    background-color: rgb(233, 0, 0);
+}
+
+.teacher-courses {
+    width: 100%;
+    height: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /* 2 columnas del mismo ancho */
+    gap: 8px;
+    /* Espacio entre las imágenes */
+    justify-items: center;
+    /* Centrar las imágenes horizontalmente */
+    align-items: start;
+    /* Alinearlas al inicio verticalmente */
+    margin-top: 2vh;
+}
+
+.teacher-courses img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
