@@ -7,7 +7,9 @@ const Teacherspage = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await fetch("http://localhost:5000/api/auth/teachers"); // URL de la API de profesores
+        const response = await fetch(
+          "https://api-backend-learnprog-1.onrender.com/api/auth/teachers"
+        ); // URL de la API de profesores
         const data = await response.json();
         setUsers(data); // Guardar los datos de los profesores en el estado
       } catch (error) {

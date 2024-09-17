@@ -19,7 +19,7 @@ const Login = () => {
     e.preventDefault();
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/auth/login",
+        "https://api-backend-learnprog-1.onrender.com/api/auth/login",
         formData
       );
       localStorage.setItem("token", res.data.token);
