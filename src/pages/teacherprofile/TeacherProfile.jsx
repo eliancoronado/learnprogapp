@@ -31,7 +31,7 @@ const TeacherProfile = () => {
     const fetchCursos = async () => {
       try {
         const response = await fetch(
-          `http://localhost:5000/api/auth/profile/${id}/cursos`
+          `https://api-backend-learnprog-p4pr.onrender.com/api/auth/profile/${id}/cursos`
         );
         const datac = await response.json();
         setCursos(datac); // Guardar los cursos
