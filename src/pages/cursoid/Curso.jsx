@@ -17,7 +17,7 @@ const Curso = () => {
       if (storedUser) {
         try {
           const response = await axios.get(
-            `http://localhost:5000/api/usuarioinfo/${storedUser.username}`
+            `https://api-backend-learnprog-p4pr.onrender.com/api/usuarioinfo/${storedUser.username}`
           ); // Cambia la URL según tu endpoint
           setUserId(response.data._id);
           console.log("User ID:", response.data._id);
@@ -34,7 +34,7 @@ const Curso = () => {
     const fetchCurso = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:5000/api/cursos/${id}`
+          `https://api-backend-learnprog-p4pr.onrender.com/api/cursos/${id}`
         );
         setCurso(response.data);
 
@@ -48,7 +48,9 @@ const Curso = () => {
 
     const aumentarVistas = async () => {
       try {
-        await axios.post(`http://localhost:5000/api/cursos/${id}/vistas`);
+        await axios.post(
+          `https://api-backend-learnprog-p4pr.onrender.com/api/cursos/${id}/vistas`
+        );
       } catch (error) {
         console.error("Error al aumentar las vistas:", error);
       }
@@ -61,7 +63,7 @@ const Curso = () => {
   const handleLike = async () => {
     try {
       const response = await axios.post(
-        `http://localhost:5000/api/cursos/${id}/likes`,
+        `https://api-backend-learnprog-p4pr.onrender.com/api/cursos/${id}/likes`,
         { userId }
       );
       setCurso(response.data);

@@ -19,10 +19,13 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const res = await axios.post("http://localhost:5000/api/auth/login", {
-        email: formData.email,
-        password: formData.password,
-      });
+      const res = await axios.post(
+        "https://api-backend-learnprog-p4pr.onrender.com/api/auth/login",
+        {
+          email: formData.email,
+          password: formData.password,
+        }
+      );
 
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("user", JSON.stringify(res.data.user));
