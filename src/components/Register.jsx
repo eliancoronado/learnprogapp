@@ -82,12 +82,7 @@ const Register = () => {
         </div>
         <div>
           <label>Imagen de perfil</label>
-          <input
-            type="file"
-            name="profileImage"
-            onChange={handleFileChange}
-            required
-          />
+          <input type="file" name="profileImage" onChange={handleFileChange} />
         </div>
         <div>
           <div className="rolsle">
