@@ -6,7 +6,7 @@ const Courses = () => {
   const [btns, setBtns] = useState([]); // Cambié el nombre para mejor semántica
 
   useEffect(() => {
-    fetch("https://api-backend-learnprog-p4pr.onrender.com/api/auth/cursos")
+    fetch("http://localhost:5000/api/auth/cursos")
       .then((response) => response.json())
       .then((cursos) => {
         if (cursos) {

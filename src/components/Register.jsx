@@ -41,8 +41,7 @@ const Register = () => {
 
     try {
       // Escoge el endpoint dependiendo del rol
-      const endpoint =
-        "https://api-backend-learnprog-p4pr.onrender.com/api/auth/register";
+      const endpoint = "http://localhost:5000/api/auth/register";
 
       const res = await axios.post(endpoint, data, {
         headers: {

@@ -9,6 +9,7 @@ import Register from "./components/Register.jsx";
 import Login from "./components/Login.jsx";
 import TeacherProfile from "./pages/teacherprofile/TeacherProfile.jsx";
 import UserProfile from "./components/AccountPage.jsx";
+import Curso from "./pages/cursoid/Curso.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -21,6 +22,7 @@ createRoot(document.getElementById("root")).render(
         <Route path="/teachers" element={<Teachers />} />
         <Route path="/profile/:id" element={<TeacherProfile />} />
         <Route path="/account" element={<UserProfile />} />
+        <Route path="/curso/:id" element={<Curso />} />
       </Routes>
     </Router>
   </StrictMode>
