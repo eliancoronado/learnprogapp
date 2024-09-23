@@ -27,16 +27,25 @@ const Register = () => {
   };
 
   const handleFileChange = (e) => {
-    setFormData({ ...formData, profileImage: e.target.files[0] });
+    const file = e.target.files[0];
+    console.log("Selected file:", file); // Esto debería mostrar el archivo que seleccionas
+    setFormData({ ...formData, profileImage: file });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("profileImage:", formData.profileImage); // Esto debería mostrar el archivo seleccionado
+
     const data = new FormData();
     data.append("username", formData.username);
     data.append("email", formData.email);
     data.append("password", formData.password);
-    data.append("profileImage", formData.profileImage);
+
+    // Solo agregar la imagen si no es null
+    if (formData.profileImage) {
+      data.append("profileImage", formData.profileImage);
+    }
+
     data.append("role", formData.role);
 
     try {
