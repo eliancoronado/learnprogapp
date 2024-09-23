@@ -17,7 +17,7 @@ const Curso = () => {
       if (storedUser) {
         try {
           const response = await axios.get(
-            `https://api-backend-learnprog-p4pr.onrender.com/api/usuarioinfo/${storedUser.username}`
+            `https://api-backend-learnprog-p4pr.onrender.com/api/usuarioinfo/${storedUser.email}`
           ); // Cambia la URL según tu endpoint
           setUserId(response.data._id);
           console.log("User ID:", response.data._id);

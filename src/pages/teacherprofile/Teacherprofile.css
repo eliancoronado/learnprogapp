@@ -115,3 +115,23 @@
     height: auto;
     border-radius: 10px;
 }
+
+.loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 8px solid #f3f3f3; /* Color de fondo */
+    border-top: 8px solid #3498db; /* Color de la parte superior */
+    border-radius: 50%; /* Hace que sea redondo */
+    width: 40px; /* Ancho del spinner */
+    height: 40px; /* Alto del spinner */
+    animation: spin 1s linear infinite; /* Animación girando */
+    margin: 10px auto; /* Centrar el spinner */
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
