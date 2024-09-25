@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import {
   FaSistrix,
   FaBars,
@@ -24,6 +26,37 @@ import "./Footerbar.css";
 
 const FootBar = () => {
   const [Search, setSearch] = useState(false);
+  const [busqueda, setBusqueda] = useState("");
+  const [cursosFiltrados, setCursosFiltrados] = useState([]);
+  const navigate = useNavigate();
+
+  const buscarCursos = async (query) => {
+    if (!query.trim()) {
+      setCursosFiltrados([]); // Limpia los resultados si no hay búsqueda
+      return;
+    }
+
+    try {
+      const response = await axios.get(
+        `https://api-backend-learnprog-p4pr.onrender.com/api/buscar?query=${query}`
+      );
+      setCursosFiltrados(response.data);
+    } catch (error) {
+      console.error("Error al buscar cursos:", error);
+      setCursosFiltrados([]); // Limpia los resultados en caso de error
+    }
+  };
+
+  // Efecto para buscar cursos conforme cambia el término de búsqueda
+  useEffect(() => {
+    buscarCursos(busqueda);
+  }, [busqueda]);
+
+  // Maneja la redirección al curso seleccionado
+  const manejarSeleccion = (id) => {
+    navigate(`/curso/${id}`);
+  };
+
   return (
     <>
       <div className="footerbar">
@@ -63,7 +96,20 @@ const FootBar = () => {
           type="text"
           placeholder="¿Qué quieres aprender hoy?"
           onClick={(e) => e.stopPropagation()}
+          value={busqueda}
+          onChange={(e) => setBusqueda(e.target.value)}
         />
+        <div className="answ" onClick={(e) => e.stopPropagation()}>
+          {cursosFiltrados.map((curso) => (
+            <div
+              className="answop"
+              key={curso._id}
+              onClick={() => manejarSeleccion(curso._id)}
+            >
+              {curso.titulo}
+            </div>
+          ))}
+        </div>
       </div>
     </>
   );

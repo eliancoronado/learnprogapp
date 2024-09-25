@@ -4,12 +4,15 @@ import axios from "axios";
 import "./curso.css";
 import Navbar from "../../components/Navbar";
 import FootBar from "../../components/FootBar";
+import { FaEye } from "react-icons/fa6";
 
 const Curso = () => {
   const { id } = useParams();
   const [curso, setCurso] = useState(null);
+  const [teacherimg, setTeacherimg] = useState(null);
   const [haDadoLike, setHaDadoLike] = useState(false);
   const [userId, setUserId] = useState(null);
+  const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
     const fetchUsuario = async () => {
@@ -60,6 +63,27 @@ const Curso = () => {
     aumentarVistas();
   }, [id, userId]);
 
+  useEffect(() => {
+    const fetchTeacher = async () => {
+      if (curso && curso.instructor) {
+        // Verifica que curso e instructor existen
+        const storedTeacher = curso.instructor;
+        console.log("Teacher: ", storedTeacher);
+        try {
+          const response = await axios.get(
+            `https://api-backend-learnprog-p4pr.onrender.com/api/teacherinfo/${storedTeacher}`
+          );
+          setTeacherimg(response.data.profileImageUrl);
+          console.log("Teacher Image URL:", response.data.profileImageUrl);
+        } catch (error) {
+          console.error("Error al obtener los datos del teacher:", error);
+        }
+      }
+    };
+
+    fetchTeacher();
+  }, [curso]); // Añade curso como dependencia
+
   const handleLike = async () => {
     try {
       const response = await axios.post(
@@ -74,6 +98,10 @@ const Curso = () => {
   };
 
   if (!curso) return <p>Cargando...</p>;
+
+  const handleTemarioClick = (index) => {
+    setActiveIndex(index); // Actualiza el estado con el índice del temario clickeado
+  };
 
   return (
     <>
@@ -90,9 +118,18 @@ const Curso = () => {
           ></iframe>
         </div>
         <h2>{curso.titulo}</h2>
-        <p>Instructor: {curso.instructor}</p>
+        <div className="contenido">
+          <p>{curso.syllabus[activeIndex]}</p>
+        </div>
+        <div className="views">
+          <FaEye />
+          {curso.vistas} Vistas
+        </div>
+        <div className="techerimg">
+          <img src={teacherimg} height="100%" />
+          <p>{curso.instructor}</p>
+        </div>
         <div className="flx-vlike">
-          <p>Vistas: {curso.vistas}</p>
           <button
             className={`like-button ${haDadoLike ? "liked" : "noliked"}`}
             onClick={handleLike}
@@ -101,15 +138,24 @@ const Curso = () => {
           </button>
         </div>
 
-        <p className="courdesc">{curso.descripcion}</p>
+        <div className="courdesc">
+          <p>Descripción del curso</p>
+          {curso.descripcion}
+        </div>
 
-        <h3>Temario:</h3>
-        <div className="temario">
-          {curso.syllabus.map((tema, index) => (
-            <div key={index} className="tmop">
-              {tema}
-            </div>
-          ))}
+        <div className="tmrioscreen">
+          <h3>Temario:</h3>
+          <div className="temario">
+            {curso.syllabus.map((tema, index) => (
+              <div
+                key={index}
+                className={`tmop ${index === activeIndex ? "active" : ""}`} // Añade la clase 'active' si el índice coincide con el estado
+                onClick={() => handleTemarioClick(index)} // Manejador de clic para actualizar el índice activo
+              >
+                {tema}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
       <FootBar />
