@@ -1,19 +1,45 @@
 @import url('https://fonts.googleapis.com/css2?family=Days+One&family=Fira+Code:wght@300..700&family=Lalezar&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 /*Fuentes*/
 
 /*
     font-family: "Lalezar", system-ui;
     font-family: "Fira Code", monospace;
     font-family: "Days One", sans-serif;
+    font-family: "Poppins", sans-serif;
 */
 
 /*CSS*/
 
-
-
-.course-page{
+.course-page {
+  position: relative;
   width: 100%;
   height: 84vh;
+  max-height: 84vh;
+  overflow: hidden; /* Importante para el pseudo-elemento */
+  padding-top: 1.5rem;
+}
+
+.background-blur {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  z-index: -3; /* Mantén la capa de fondo detrás del contenido */
+  filter: blur(50px); /* Aplica el desenfoque */
+}
+
+.background-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(27, 40, 50, 1), rgba(0, 0, 0, 0.7) 90%, transparent 100%);
+  z-index: -2; /* Se asegura de que el gradiente esté por encima de la imagen desenfocada */
 }
 
 .carousel-container {
@@ -22,134 +48,128 @@
   max-width: 600px;
   margin: auto;
   overflow: hidden;
-  border-radius: 10px;
   display: flex;
   justify-content: center;
-  align-items: center; /* Ajusta la altura según tu diseño */
-  background-size: cover;
-  background-position: center;
-  backdrop-filter: blur(5px); /* Aplica el filtro de desenfoque al fondo */
-  transition: background-image 1s ease-in-out; /* Transición suave para el cambio de fondo */
-}
-  
-  .carousel-image {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    position: absolute;
-    top: 0;
-    left: 0;
-    opacity: 0;
-    z-index: 1;
-    transition: opacity 1s ease-in-out;
-  }
-  
-  .carousel-image.active {
-    opacity: 1;
-    position: relative;
-    z-index: 2;
-  }
-  
-  .carousel-buttons {
-    position: absolute;
-    top: 50%;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    transform: translateY(-50%);
-    z-index: 3;
-  }
-  
-  .carousel-button {
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    width: auto;
-    height: auto;
-    padding: 0.6rem 1rem;
-    cursor: pointer;
-    border-radius: 50%;
-  }
-  
-  .carousel-button:hover {
-    background-color: rgba(0, 0, 0, 0.8);
-  }
-  
-  .carousel-indicators {
-    position: absolute;
-    bottom: 10px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    z-index: 3;
-  }
-  
-  .indicator {
-    height: 10px;
-    width: 10px;
-    margin: 0 5px;
-    background-color: #ccc;
-    border-radius: 50%;
-    display: inline-block;
-    cursor: pointer;
-  }
-  
-  .indicator.active {
-    background-color: #333;
-  }
-  
-  .corstxt{
-    width: 100%;
-    height: auto;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    padding: 0 1rem;
-  }
-
-  .corstxt a{
-    all: inherit;
-  }
-
-  .corstxt .prx{
-    padding: 0.1rem 0.8rem;
-    color: #0F1811 90%;
-    background-color: #9EF6B1;
-    border-radius: 8px;
-    font-size: 3vh;
-    font-family: "Lalezar", system-ui;
-    margin-top: 2vh;
+  align-items: center;
+  z-index: 1; /* Asegura que esté por encima del fondo */
+  padding: 20px;
 }
 
-.corstxt h1{
-  font-size: 3.5vh;
+.carousel-track {
+  display: flex; /* Para colocar las imágenes una al lado de la otra */
+  transition: transform 1s ease-in-out; /* Animación suave de desplazamiento */
+}
+
+.carousel-image {
+  width: 100%; /* Ajusta el ancho de las imágenes para que incluyan el espacio del gap */
+  height: auto;
+  object-fit: cover;
+  border-radius: 10px;
+  width: calc(100% - 40px); /* Ajusta el ancho para tener márgenes laterales */
+  margin: 0 20px; /* Espacio entre las imágenes */
+}
+
+
+
+.carousel-buttons {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+  z-index: 3;
+}
+
+.carousel-button {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 0.6rem 1rem;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.carousel-button:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.carousel-indicators {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  z-index: 3;
+}
+
+.indicator {
+  height: 10px;
+  width: 10px;
+  margin: 0 5px;
+  background-color: #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.indicator.active {
+  background-color: #333;
+}
+
+.corstxt {
+  width: 100%;
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.corstxt a{
+  all: inherit;
+  }
+
+.corstxt .prx {
+  padding: 0.1rem 0.8rem;
+  background-color: #9ef6b1;
+  color: #0f1811;
+  border-radius: 8px;
+  font-size: 3vh;
   font-family: "Lalezar", system-ui;
+  margin-top: 2vh;
+}
+
+.corstxt h1 {
+  font-size: 3vh;
+  font-family: "Poppins", sans-serif;
   margin-top: 1.5vh;
   color: white;
-  font-weight: 200;
-  letter-spacing: 0.5px;
+  font-weight: 600;
   text-align: center;
 }
-.corstxt p{
-  font-size: 2.2vh;
-  font-family: "Lalezar", system-ui;
+
+.corstxt p {
+  font-size: 1.5vh;
+  font-family: "Poppins", sans-serif;
   margin-top: 1.5vh;
-  color: #C1C4C7;
-  font-weight: 100;
+  color: #c2c8cd;
+  font-weight: 500;
   letter-spacing: 1px;
   text-align: center;
 }
 
-.corstxt button{
+.corstxt button {
   width: 100%;
   padding: 0.6rem 0;
   margin-top: 5vh;
   border-radius: 8px;
   color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
   font-size: 2vh;
-  font-family: "Days One", sans-serif;
-  font-weight: 300;
+  font-weight: 500;
+  font-family: "Poppins", sans-serif;
   background-color: #35a9fd;
   border: none;
 }

@@ -41,13 +41,6 @@ const UserProfile = () => {
     }
   }, []);
 
-  useEffect(() => {
-    const storedRol = localStorage.getItem("user");
-    if (storedRol) {
-      setRol(JSON.parse(storedRol));
-    }
-  }, []);
-
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
@@ -99,6 +92,13 @@ const UserProfile = () => {
   if (!user) {
     return <p>Cargando...</p>;
   }
+
+  useEffect(() => {
+    const storedRol = localStorage.getItem("user");
+    if (storedRol) {
+      setRol(JSON.parse(storedRol));
+    }
+  }, []);
 
   return (
     <>

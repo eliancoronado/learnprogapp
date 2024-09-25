@@ -1,26 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 import {
   FaSistrix,
-  FaBars,
-  FaGripLines,
-  FaToolbox,
-  FaBoxArchive,
-  FaBox,
-  FaRegIdCard,
   FaUsers,
-  FaBlog,
-  FaBlogger,
-  FaBloggerB,
-  FaUser,
   FaCircleUser,
-  FaBone,
-  FaPaperPlane,
-  FaPaperclip,
   FaFile,
-  FaFileWord,
   FaGrip,
+  FaBorderAll,
 } from "react-icons/fa6";
 import "./Footerbar.css";
 
@@ -29,6 +16,7 @@ const FootBar = () => {
   const [busqueda, setBusqueda] = useState("");
   const [cursosFiltrados, setCursosFiltrados] = useState([]);
   const navigate = useNavigate();
+  const location = useLocation(); // Hook para obtener la ubicación actual
 
   const buscarCursos = async (query) => {
     if (!query.trim()) {
@@ -57,29 +45,34 @@ const FootBar = () => {
     navigate(`/curso/${id}`);
   };
 
+  // Función para determinar si la opción es la activa
+  const isActive = (path) => (location.pathname === path ? "active" : "");
+
   return (
     <>
       <div className="footerbar">
         <a href="/courses">
-          <div className="fboption">
-            <FaGrip className="i" />
+          <div className={`fboption ${isActive("/courses")}`}>
+            <FaBorderAll className="i" />
             Cursos
           </div>
         </a>
-        <div className="fboption">
-          <FaUsers className="i" />
-          Comunidad
-        </div>
+        <a href="/comunity">
+          <div className={`fboption ${isActive("/community")}`}>
+            <FaUsers className="i" />
+            Comunidad
+          </div>
+        </a>
         <div className="fboption" onClick={() => setSearch(true)}>
           <FaSistrix className="i" />
           Buscar
         </div>
-        <div className="fboption">
+        <div className={`fboption ${isActive("/blog")}`}>
           <FaFile className="i" />
           Blog
         </div>
         <a href="/account">
-          <div className="fboption">
+          <div className={`fboption ${isActive("/account")}`}>
             <FaCircleUser className="i" />
             Cuenta
           </div>
@@ -91,7 +84,6 @@ const FootBar = () => {
         className={Search ? "sscreen active" : "sscreen"}
         onClick={() => setSearch(false)}
       >
-        {/* Detenemos la propagación del clic dentro del input */}
         <input
           type="text"
           placeholder="¿Qué quieres aprender hoy?"

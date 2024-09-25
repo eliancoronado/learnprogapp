@@ -10,6 +10,7 @@ import Login from "./components/Login.jsx";
 import TeacherProfile from "./pages/teacherprofile/TeacherProfile.jsx";
 import UserProfile from "./components/AccountPage.jsx";
 import Curso from "./pages/cursoid/Curso.jsx";
+import Comunity from "./components/Comunity.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -20,6 +21,7 @@ createRoot(document.getElementById("root")).render(
         <Route path="/home" element={<App />} />
         <Route path="/courses" element={<CursoPage />} />
         <Route path="/teachers" element={<Teachers />} />
+        <Route path="/comunity" element={<Comunity />} />
         <Route path="/profile/:id" element={<TeacherProfile />} />
         <Route path="/account" element={<UserProfile />} />
         <Route path="/curso/:id" element={<Curso />} />
