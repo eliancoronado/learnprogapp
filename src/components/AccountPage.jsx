@@ -89,16 +89,16 @@ const UserProfile = () => {
     }
   };
 
-  if (!user) {
-    return <p>Cargando...</p>;
-  }
-
   useEffect(() => {
     const storedRol = localStorage.getItem("user");
     if (storedRol) {
       setRol(JSON.parse(storedRol));
     }
   }, []);
+
+  if (!user) {
+    return <p>Cargando...</p>;
+  }
 
   return (
     <>
