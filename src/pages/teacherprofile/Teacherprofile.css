@@ -124,8 +124,8 @@
     border: 8px solid #f3f3f3; /* Color de fondo */
     border-top: 8px solid #3498db; /* Color de la parte superior */
     border-radius: 50%; /* Hace que sea redondo */
-    width: 40px; /* Ancho del spinner */
-    height: 40px; /* Alto del spinner */
+    width: 50px; /* Ancho del spinner */
+    height: 50px; /* Alto del spinner */
     animation: spin 1s linear infinite; /* Animación girando */
     margin: 10px auto; /* Centrar el spinner */
   }

@@ -58,7 +58,7 @@ const FootBar = () => {
           </div>
         </a>
         <a href="/comunity">
-          <div className={`fboption ${isActive("/community")}`}>
+          <div className={`fboption ${isActive("/comunity")}`}>
             <FaUsers className="i" />
             Comunidad
           </div>

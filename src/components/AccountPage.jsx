@@ -5,6 +5,7 @@ import Navbar from "./Navbar";
 import FootBar from "./FootBar";
 import "../pages/teacherprofile/Teacherprofile.css";
 import { FaArrowLeftLong } from "react-icons/fa6";
+import Loader from "./Loader";
 
 const UserProfile = () => {
   const navigate = useNavigate();
@@ -97,7 +98,7 @@ const UserProfile = () => {
   }, []);
 
   if (!user) {
-    return <p>Cargando...</p>;
+    return <Loader />;
   }
 
   return (

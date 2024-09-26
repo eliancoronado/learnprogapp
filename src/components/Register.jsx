@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Loader from "./Loader"; // Asegúrate de tener un componente Loader creado o importado
 import "./style.css";
 
 const Register = () => {
@@ -11,7 +12,7 @@ const Register = () => {
     profileImage: null,
     role: "student", // Valor por defecto
   });
-
+  const [loading, setLoading] = useState(false); // Estado para manejar el loader
   const navigate = useNavigate();
 
   // Verificar si el usuario ya está autenticado
@@ -49,6 +50,8 @@ const Register = () => {
     data.append("role", formData.role);
 
     try {
+      setLoading(true); // Activar el loader cuando comience el registro
+
       // Escoge el endpoint dependiendo del rol
       const endpoint =
         "https://api-backend-learnprog-p4pr.onrender.com/api/auth/register";
@@ -61,14 +64,18 @@ const Register = () => {
 
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("user", JSON.stringify(res.data.user));
-      navigate("/home");
+      setLoading(false); // Desactivar el loader cuando se complete el registro
+      navigate("/home"); // Redirigir al home
     } catch (error) {
+      setLoading(false); // Desactivar el loader si hay un error
       console.error("Error en el registro", error);
     }
   };
 
   return (
     <div className="rgsterpage">
+      {loading && <Loader />}{" "}
+      {/* Mostrar el loader mientras loading sea true */}
       <form onSubmit={handleSubmit}>
         <h1>LearnProg</h1>
         <h3>Crea tu cuenta</h3>
@@ -107,7 +114,12 @@ const Register = () => {
             </select>
           </div>
         </div>
-        <button type="submit">Registrar</button>
+        <button type="submit" disabled={loading}>
+          {" "}
+          {/* Deshabilitar botón si está cargando */}
+          {loading ? "Registrando..." : "Registrar"}{" "}
+          {/* Mostrar texto alterno si está cargando */}
+        </button>
         <p>
           Ya tienes una cuenta <a href="/login">Inicia Sesión</a>
         </p>
