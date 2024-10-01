@@ -51,7 +51,7 @@ const Cursopg = () => {
           ) {
             console.log("El usuario ya está matriculado.");
             setIsMatriculado(true);
-            //navigate(`/curso/${id}/temas`);
+            navigate(`/curso/${id}/temas`);
           }
         } catch (error) {
           console.error("Error al obtener los datos del curso:", error);
