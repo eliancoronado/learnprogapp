@@ -44,7 +44,7 @@ const Cursopg = () => {
         console.log("Curso obtenido:", response.data);
         console.log("User ID:", userId);
 
-        if (response.data.estudiantesMatriculados.includes(String(userId))) {
+        if (response.data.estudiantesMatriculados.includes(userId)) {
           console.log("El usuario ya está matriculado.");
           setIsMatriculado(true);
           // Redirigir al usuario a la ruta de los temas del curso
