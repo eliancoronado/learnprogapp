@@ -1,5 +1,5 @@
 import Navbar from "../../components/Navbar";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import FootBar from "../../components/FootBar";
 import React, { useEffect, useState } from "react";
 import { FaCircleCheck } from "react-icons/fa6";
@@ -8,6 +8,7 @@ import axios from "axios";
 
 const Cursopg = () => {
   const { id } = useParams();
+  const navigate = useNavigate(); // Hook de navegación
   const [curso, setCurso] = useState(null);
   const [userId, setUserId] = useState(null);
   const [isMatriculado, setIsMatriculado] = useState(false);
@@ -46,6 +47,8 @@ const Cursopg = () => {
         if (response.data.estudiantesMatriculados.includes(String(userId))) {
           console.log("El usuario ya está matriculado.");
           setIsMatriculado(true);
+          // Redirigir al usuario a la ruta de los temas del curso
+          navigate(`/curso/${id}/temas`);
         }
       } catch (error) {
         console.error("Error al obtener los datos del curso:", error);
@@ -55,7 +58,7 @@ const Cursopg = () => {
     if (userId) {
       fetchCurso();
     }
-  }, [id, userId]);
+  }, [id, userId, navigate]);
 
   const handleMatricularme = async () => {
     try {
@@ -67,6 +70,8 @@ const Cursopg = () => {
       );
       setIsMatriculado(true);
       console.log("Usuario matriculado exitosamente:", response.data);
+      // Redirigir al usuario a la ruta de los temas del curso
+      navigate(`/curso/${id}/temas`);
     } catch (error) {
       console.error("Error al matricular al usuario:", error);
     }
@@ -91,21 +96,21 @@ const Cursopg = () => {
             <span>
               <FaCircleCheck />
             </span>
-            Lo que aprenderas
+            Lo que aprenderás
           </h4>
           <h4>
             <span>
               <FaCircleCheck />
             </span>
-            Lo que aprenderas
+            Lo que aprenderás
           </h4>
         </div>
         <div className="matricularme">
           {!isMatriculado ? (
             <>
-              <h4>Matriculate ahora!</h4>
+              <h4>¡Matricúlate ahora!</h4>
               <button type="button" onClick={handleMatricularme}>
-                Matricularme ahora!
+                ¡Matricularme ahora!
               </button>
             </>
           ) : (
