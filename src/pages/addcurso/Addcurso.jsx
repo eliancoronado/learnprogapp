@@ -79,7 +79,8 @@ const Addcurso = () => {
     }
 
     try {
-      const endpoint = "http://localhost:5000/api/auth/newcurso"; // Cambiado a la ruta correcta
+      const endpoint =
+        "https://api-backend-learnprog-p4pr.onrender.com/api/auth/newcurso"; // Cambiado a la ruta correcta
       const response = await axios.post(endpoint, data, {
         headers: {
           "Content-Type": "multipart/form-data",

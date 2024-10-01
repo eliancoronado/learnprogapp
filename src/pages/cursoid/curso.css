@@ -108,6 +108,35 @@
     margin: 2.5vh 0;
 }
 
+.curso .btnhecho{
+    width: 100%;
+    height: 5vh;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    margin-bottom: 2.5vh;
+
+}
+
+.progreso-button {
+    height: 100%;
+    padding: 0 1.5rem;
+    border-radius: 5px;
+    background-color: rgb(177, 177, 177); /* Color inicial */
+    color: rgb(0, 0, 0);
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: "Poppins", sans-serif;
+    font-size: 2.4vh;
+    font-weight: 700;
+  }
+  
+  .progreso-button.actualizado {
+    background-color: green; /* Color cuando se ha hecho clic */
+  }
+  
+
 .curso .flx-vlike p{
     display: flex;
     align-items: center;
@@ -204,3 +233,4 @@
     width: 100%;
     height: auto;
 }
+

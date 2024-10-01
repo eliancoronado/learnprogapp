@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import Dashboard from "./pages/dashpanel/Dashboard";
 import Home from "./sections/home/Home";
 import NCourses from "./sections/NewCourses/NCourses";
+import Cursosacc from "./sections/cursosaccedidos/Cursosacc";
 
 function App() {
   // Estado para almacenar el rol del usuario
@@ -24,6 +25,7 @@ function App() {
         <Home />
         {/* Mostrar el Dashboard solo si el rol es 'teacher' */}
         {role === "teacher" && <Dashboard />}
+        {role !== "teacher" && <Cursosacc />}
         <NCourses />
       </div>
     </>

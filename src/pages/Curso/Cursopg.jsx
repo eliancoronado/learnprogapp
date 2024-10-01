@@ -1,10 +1,10 @@
-import Navbar from "../../components/Navbar";
-import { useParams, useNavigate } from "react-router-dom";
-import FootBar from "../../components/FootBar";
 import React, { useEffect, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import axios from "axios";
+import Navbar from "../../components/Navbar";
+import FootBar from "../../components/FootBar";
 import { FaCircleCheck } from "react-icons/fa6";
 import "./cursopg.css";
-import axios from "axios";
 
 const Cursopg = () => {
   const { id } = useParams();
@@ -40,13 +40,16 @@ const Cursopg = () => {
             `https://api-backend-learnprog-p4pr.onrender.com/api/cursos/${id}`
           );
           setCurso(response.data);
-          console.log("Curso obtenido:", response.data);
-          console.log("User ID:", userId);
+          const estudiantesMatriculados =
+            response.data.estudiantesMatriculados || [];
 
-          // Verificar si el usuario está matriculado
+          console.log("Estudiantes matriculados:", estudiantesMatriculados);
+          console.log("User ID para verificación:", userId);
+
           if (
-            response.data.estudiantesMatriculados.some(
-              (estudiante) => estudiante._id === userId
+            Array.isArray(estudiantesMatriculados) &&
+            estudiantesMatriculados.some(
+              (estudiante) => estudiante._id === userId // Cambiado a _id
             )
           ) {
             console.log("El usuario ya está matriculado.");
@@ -86,7 +89,7 @@ const Cursopg = () => {
       <Navbar />
       <div className="cursopg">
         <div className="imgcurso">
-          {curso && (
+          {curso.image_url && (
             <img src={curso.image_url} width="100%" alt="Imagen del curso" />
           )}
         </div>
@@ -94,18 +97,15 @@ const Cursopg = () => {
         <p>{curso.descripcion}</p>
         <div className="qaprenderas">
           <h5>¿Qué aprenderás?</h5>
-          <h4>
-            <span>
-              <FaCircleCheck />
-            </span>
-            Lo que aprenderás
-          </h4>
-          <h4>
-            <span>
-              <FaCircleCheck />
-            </span>
-            Lo que aprenderás
-          </h4>
+          {curso.aprendizajes &&
+            curso.aprendizajes.map((aprendizaje, index) => (
+              <h4 key={index}>
+                <span>
+                  <FaCircleCheck />
+                </span>
+                {aprendizaje}
+              </h4>
+            ))}
         </div>
         <div className="matricularme">
           {!isMatriculado ? (

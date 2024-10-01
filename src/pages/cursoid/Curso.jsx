@@ -13,7 +13,9 @@ const Curso = () => {
   const [haDadoLike, setHaDadoLike] = useState(false);
   const [userId, setUserId] = useState(null);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [progresoActualizado, setProgresoActualizado] = useState(false); // Estado para el botón
 
+  // Obtener el usuario autenticado
   useEffect(() => {
     const fetchUsuario = async () => {
       const storedUser = JSON.parse(localStorage.getItem("user"));
@@ -21,9 +23,8 @@ const Curso = () => {
         try {
           const response = await axios.get(
             `https://api-backend-learnprog-p4pr.onrender.com/api/usuarioinfo/${storedUser.email}`
-          ); // Cambia la URL según tu endpoint
+          );
           setUserId(response.data._id);
-          console.log("User ID:", response.data._id);
         } catch (error) {
           console.error("Error al obtener los datos del usuario:", error);
         }
@@ -33,6 +34,7 @@ const Curso = () => {
     fetchUsuario();
   }, []);
 
+  // Obtener los datos del curso y actualizar vistas
   useEffect(() => {
     const fetchCurso = async () => {
       try {
@@ -63,18 +65,16 @@ const Curso = () => {
     aumentarVistas();
   }, [id, userId]);
 
+  // Obtener la imagen del instructor
   useEffect(() => {
     const fetchTeacher = async () => {
       if (curso && curso.instructor) {
-        // Verifica que curso e instructor existen
         const storedTeacher = curso.instructor;
-        console.log("Teacher: ", storedTeacher);
         try {
           const response = await axios.get(
             `https://api-backend-learnprog-p4pr.onrender.com/api/teacherinfo/${storedTeacher}`
           );
           setTeacherimg(response.data.profileImageUrl);
-          console.log("Teacher Image URL:", response.data.profileImageUrl);
         } catch (error) {
           console.error("Error al obtener los datos del teacher:", error);
         }
@@ -82,7 +82,7 @@ const Curso = () => {
     };
 
     fetchTeacher();
-  }, [curso]); // Añade curso como dependencia
+  }, [curso]);
 
   const handleLike = async () => {
     try {
@@ -97,10 +97,23 @@ const Curso = () => {
     }
   };
 
+  const handleProgresoClick = async () => {
+    try {
+      console.log(`Enviando userId: ${userId}, porcentaje: 10`); // Verifica el valor
+      await axios.post(
+        `https://api-backend-learnprog-p4pr.onrender.com/api/${id}/progreso`,
+        { userId, porcentaje: 10 }
+      );
+      setProgresoActualizado(true);
+    } catch (error) {
+      console.error("Error al actualizar el progreso:", error);
+    }
+  };
+
   if (!curso) return <p>Cargando...</p>;
 
   const handleTemarioClick = (index) => {
-    setActiveIndex(index); // Actualiza el estado con el índice del temario clickeado
+    setActiveIndex(index);
   };
 
   return (
@@ -138,6 +151,17 @@ const Curso = () => {
           </button>
         </div>
 
+        <div className="btnhecho">
+          <button
+            className={`progreso-button ${
+              progresoActualizado ? "actualizado" : "no-actualizado"
+            }`}
+            onClick={handleProgresoClick}
+          >
+            Hecho
+          </button>
+        </div>
+
         <div className="courdesc">
           <p>Descripción del curso</p>
           {curso.descripcion}
@@ -149,14 +173,16 @@ const Curso = () => {
             {curso.syllabus.map((tema, index) => (
               <div
                 key={index}
-                className={`tmop ${index === activeIndex ? "active" : ""}`} // Añade la clase 'active' si el índice coincide con el estado
-                onClick={() => handleTemarioClick(index)} // Manejador de clic para actualizar el índice activo
+                className={`tmop ${index === activeIndex ? "active" : ""}`}
+                onClick={() => handleTemarioClick(index)}
               >
                 {tema}
               </div>
             ))}
           </div>
         </div>
+
+        {/* Botón para aumentar el progreso */}
       </div>
       <FootBar />
     </>
