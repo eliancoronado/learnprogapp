@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Days+One&family=Fira+Code:wght@300..700&family=Lalezar&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+/*Fuentes*/
+
+/*
+    font-family: "Lalezar", system-ui;
+    font-family: "Fira Code", monospace;
+    font-family: "Days One", sans-serif;
+    font-family: "Poppins", sans-serif;
+*/
+
+/*CSS*/
+
+.cursopg{
+    width: 100%;
+    height: 84vh;
+    overflow: auto;
+    max-height: 84vh;
+    background-color: #0D161C;
+    padding: 1rem;
+}
+
+.imgcurso{
+    width: 100%;
+    height: auto;
+}
+
+.imgcurso img{
+    border-radius: 10px;
+}
+
+.cursopg h3{
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-size: 2.7vh;
+    color: white;
+    margin: 2vh 0;
+}
+
+.cursopg p{
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-size: 1.7vh;
+    color: #7D858B;
+    margin-bottom: 2vh;
+    text-align: justify;
+}
+
+.cursopg .qaprenderas{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 2.5vh;
+}
+
+.cursopg .qaprenderas h5{
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-size: 2.4vh;
+    color: white;
+}
+
+.cursopg .qaprenderas h4{
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    color: #7D858B;
+    display: flex;
+    font-size: 2vh;
+    gap: 10px;
+}
+
+.cursopg .qaprenderas h4 span{
+    color: #12A27C;
+}
+.cursopg .matricularme{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+}
+
+.cursopg .matricularme h4{
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    color: #7D858B;
+    font-size: 2vh;
+}
+
+.cursopg .matricularme button{
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    color: #ffffff;
+    font-size: 2.4vh;
+    width: 100%;
+    background-color: #35A9FD;
+    padding: 0.5rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 10px;
+}

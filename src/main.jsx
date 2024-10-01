@@ -11,6 +11,9 @@ import TeacherProfile from "./pages/teacherprofile/TeacherProfile.jsx";
 import UserProfile from "./components/AccountPage.jsx";
 import Curso from "./pages/cursoid/Curso.jsx";
 import Comunity from "./components/Comunity.jsx";
+import Cursopg from "./pages/Curso/Cursopg.jsx";
+import Addcurso from "./pages/addcurso/Addcurso.jsx";
+import Panel from "./pages/panel/Panel.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -24,7 +27,9 @@ createRoot(document.getElementById("root")).render(
         <Route path="/comunity" element={<Comunity />} />
         <Route path="/profile/:id" element={<TeacherProfile />} />
         <Route path="/account" element={<UserProfile />} />
-        <Route path="/curso/:id" element={<Curso />} />
+        <Route path="/curso/:id" element={<Cursopg />} />
+        <Route path="/curso/:id/panel" element={<Panel />} />
+        <Route path="/new-course" element={<Addcurso />} />
       </Routes>
     </Router>
   </StrictMode>

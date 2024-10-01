@@ -10,7 +10,7 @@ import Loader from "./Loader";
 const UserProfile = () => {
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
-  const [rol, setRol] = useState(false);
+  const [rol, setRol] = useState(null); // Estado para almacenar el rol del usuario
   const [Imgage, setImage] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [updatedName, setUpdatedName] = useState("");
@@ -33,6 +33,7 @@ const UserProfile = () => {
           const userData = response.data;
           setUser(userData);
           setUpdatedName(userData.username);
+          setRol(storedUser.role); // Almacenar el rol del usuario obtenido desde la API
         } catch (error) {
           console.error("Error al obtener los datos del usuario:", error);
         }
@@ -90,13 +91,6 @@ const UserProfile = () => {
     }
   };
 
-  useEffect(() => {
-    const storedRol = localStorage.getItem("user");
-    if (storedRol) {
-      setRol(JSON.parse(storedRol));
-    }
-  }, []);
-
   if (!user) {
     return <Loader />;
   }
@@ -116,6 +110,7 @@ const UserProfile = () => {
           className={Imgage ? "image active" : "image"}
           onClick={toggleSidebar}
         />
+
         {isEditing ? (
           <>
             <input
@@ -131,10 +126,17 @@ const UserProfile = () => {
           <>
             <h1>{user.username}</h1>
             <p>Correo: {user.email}</p>
-            <p>Rol: {rol.role === "teacher" ? "Profesor" : "Estudiante"}</p>
+            <p>Rol: {rol === "teacher" ? "Profesor" : "Estudiante"}</p>
+            {/* Mostrar botón adicional si el rol es 'teacher' */}
+            {rol === "teacher" && (
+              <button onClick={() => navigate("/new-course")}>
+                Nuevo curso
+              </button>
+            )}
             <button onClick={handleEditProfile}>Editar Perfil</button>
           </>
         )}
+
         <button onClick={handleLogout}>Cerrar Sesión</button>
       </div>
       <FootBar />

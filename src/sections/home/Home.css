@@ -1,15 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Days+One&family=Fira+Code:wght@300..700&family=Lalezar&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 /*Fuentes*/
 
 /*
     font-family: "Lalezar", system-ui;
     font-family: "Fira Code", monospace;
     font-family: "Days One", sans-serif;
+    font-family: "Poppins", sans-serif;
 */
 
 /*CSS*/
 
 /*Va conforme al codigo Home.jsx y conforme la estructura del mismo*/
+.home a{
+    all: initial;
+}
 
 .home{
     width: 100%;
@@ -17,32 +22,23 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-align: center;
-    padding-top: 4rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
 }
 
 .home h1{
-    font-size: 4vh;
+    font-size: 3.1vh;
     color: #E9BC5A;
     font-family: "Fira Code", monospace;
-}
-
-.home h3{   
-    font-size: 2.5vh;
-    color: #fff;
-    font-family: "Lalezar", system-ui;
-    font-weight: 300;
-    margin-top: 1vh;
+    margin: 1rem 1rem;
+    text-align: center;
 }
 
 .home h4{   
-    font-size: 2vh;
+    font-size: 2.2vh;
     color: #8199AC;
     font-family: "Lalezar", system-ui;
     font-weight: 300;
-    margin-top: 1vh;
+    margin: 0 1rem;
+    text-align: center;
 }
 
 .home h5{   
@@ -51,6 +47,7 @@
     font-family: "Days One", sans-serif;
     font-weight: 300;
     margin-top: 2.5vh;
+    text-align: center;
 }
 
 .home .counter{   
@@ -59,19 +56,61 @@
     font-family: "Days One", sans-serif;
     font-weight: 300;
     margin-top: 1.5vh;
+    text-align: center;
 }
 
 .home button{
     padding: 0.7rem 1.2rem;
     border-radius: 8px;
-    font-size: 2.2vh;
-    color: #5E4B20;
-    font-family: "Lalezar", system-ui;
+    font-size: 2.1vh;
+    color: #fff;
+    font-family: "Poppins", sans-serif;
     font-weight: 400;
-    background-color: #FFD475;
-    border: none;
+    background-color: transparent;
+    border: 1px solid white;
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
     margin-top: 2vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all .4s ease;
+}
+
+.home button:active{
+    padding: 0.7rem 1.2rem;
+    border-radius: 8px;
+    font-size: 2.1vh;
+    color: #000;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    background-color: white;
+    border: 1px solid white;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+    margin-top: 2vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all .4s ease;
+}
+
+.home button:hover{
+    padding: 0.7rem 1.2rem;
+    border-radius: 8px;
+    font-size: 2.1vh;
+    color: #000;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    background-color: white;
+    border: 1px solid white;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+    margin-top: 2vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all .4s ease;
 }
 
 .home p{
@@ -80,4 +119,5 @@
     font-family: "Lalezar", system-ui;
     font-weight: 400;
     margin-top: 1vh;
+    text-align: center;
 }

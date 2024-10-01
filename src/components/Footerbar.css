@@ -19,6 +19,7 @@
     background-color: #0D161C; 
     padding: 0 0.7rem;
     gap: 5px;
+    border-top: 1px solid #253541;
 }
 
 .fboption{
