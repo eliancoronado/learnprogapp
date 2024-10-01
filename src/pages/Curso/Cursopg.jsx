@@ -33,29 +33,31 @@ const Cursopg = () => {
   }, []);
 
   useEffect(() => {
-    // Obtener datos del curso y verificar si el usuario está matriculado
-    const fetchCurso = async () => {
-      try {
-        const response = await axios.get(
-          `https://api-backend-learnprog-p4pr.onrender.com/api/cursos/${id}`
-        );
-        setCurso(response.data);
-        // Verificar valores en la consola
-        console.log("Curso obtenido:", response.data);
-        console.log("User ID:", userId);
-
-        if (response.data.estudiantesMatriculados.includes(userId)) {
-          console.log("El usuario ya está matriculado.");
-          setIsMatriculado(true);
-          // Redirigir al usuario a la ruta de los temas del curso
-          navigate(`/curso/${id}/temas`);
-        }
-      } catch (error) {
-        console.error("Error al obtener los datos del curso:", error);
-      }
-    };
-
     if (userId) {
+      const fetchCurso = async () => {
+        try {
+          const response = await axios.get(
+            `https://api-backend-learnprog-p4pr.onrender.com/api/cursos/${id}`
+          );
+          setCurso(response.data);
+          console.log("Curso obtenido:", response.data);
+          console.log("User ID:", userId);
+
+          // Verificar si el usuario está matriculado
+          if (
+            response.data.estudiantesMatriculados.some(
+              (estudiante) => estudiante._id === userId
+            )
+          ) {
+            console.log("El usuario ya está matriculado.");
+            setIsMatriculado(true);
+            //navigate(`/curso/${id}/temas`);
+          }
+        } catch (error) {
+          console.error("Error al obtener los datos del curso:", error);
+        }
+      };
+
       fetchCurso();
     }
   }, [id, userId, navigate]);
