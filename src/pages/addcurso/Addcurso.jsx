@@ -12,9 +12,13 @@ const Addcurso = () => {
     video_url: "",
     image_url: null,
     syllabus: [],
-    descripcion: "", // Añadir el campo de descripción aquí
+    descripcion: "",
+    activities: [], // Estado adicional para las actividades
   });
   const [syllabusInput, setSyllabusInput] = useState("");
+  const [activityQuestion, setActivityQuestion] = useState(""); // Estado para la pregunta
+  const [activityOptions, setActivityOptions] = useState(["", "", "", ""]); // Estado para las opciones
+  const [correctAnswer, setCorrectAnswer] = useState(""); // Estado para la respuesta correcta
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
@@ -63,6 +67,33 @@ const Addcurso = () => {
     }
   };
 
+  // Añadir una nueva pregunta y respuestas como actividad
+  const addActivityItem = () => {
+    if (
+      activityQuestion.trim() !== "" &&
+      activityOptions.every((option) => option.trim() !== "") &&
+      correctAnswer.trim() !== ""
+    ) {
+      const newActivity = {
+        question: activityQuestion,
+        options: activityOptions,
+        answer: correctAnswer,
+      };
+
+      setFormData((prevFormData) => ({
+        ...prevFormData,
+        activities: [...prevFormData.activities, newActivity],
+      }));
+
+      // Limpiar campos de la actividad
+      setActivityQuestion("");
+      setActivityOptions(["", "", "", ""]);
+      setCorrectAnswer("");
+    } else {
+      alert("Por favor, completa todos los campos para agregar la actividad.");
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -71,8 +102,9 @@ const Addcurso = () => {
     data.append("titulo", formData.titulo);
     data.append("instructor", formData.instructor);
     data.append("video_url", formData.video_url);
-    data.append("descripcion", formData.descripcion); // Añadir la descripción aquí
+    data.append("descripcion", formData.descripcion);
     data.append("syllabus", JSON.stringify(formData.syllabus));
+    data.append("activities", JSON.stringify(formData.activities)); // Incluir actividades en el payload
 
     if (formData.image_url) {
       data.append("image_url", formData.image_url);
@@ -133,11 +165,7 @@ const Addcurso = () => {
         </div>
         <div>
           <label>Imagen del curso:</label>
-          <input
-            type="file"
-            name="image_url" // Asegúrate de que coincida con lo que espera el backend
-            onChange={handleFileChange}
-          />
+          <input type="file" name="image_url" onChange={handleFileChange} />
         </div>
         <div>
           <label>Instructor:</label>
@@ -169,6 +197,58 @@ const Addcurso = () => {
             ))}
           </ul>
         </div>
+
+        {/* Sección para agregar actividades */}
+        <div>
+          <h3>Añadir Actividad</h3>
+          <div>
+            <label>Pregunta:</label>
+            <input
+              type="text"
+              value={activityQuestion}
+              onChange={(e) => setActivityQuestion(e.target.value)}
+              placeholder="Escribe la pregunta de la actividad"
+            />
+          </div>
+          {activityOptions.map((option, index) => (
+            <div key={index}>
+              <label>Opción {index + 1}:</label>
+              <input
+                type="text"
+                value={option}
+                onChange={(e) => {
+                  const updatedOptions = [...activityOptions];
+                  updatedOptions[index] = e.target.value;
+                  setActivityOptions(updatedOptions);
+                }}
+                placeholder={`Opción ${index + 1}`}
+              />
+            </div>
+          ))}
+          <div>
+            <label>Respuesta Correcta:</label>
+            <input
+              type="text"
+              value={correctAnswer}
+              onChange={(e) => setCorrectAnswer(e.target.value)}
+              placeholder="Escribe la respuesta correcta"
+            />
+          </div>
+          <button type="button" onClick={addActivityItem}>
+            Añadir Actividad
+          </button>
+        </div>
+
+        {/* Mostrar las preguntas de las actividades */}
+        <div className="activity-list">
+          <h4>Actividades actuales:</h4>
+          <ul>
+            {formData.activities.map((activity, index) => (
+              <li key={index}>{activity.question}</li> // Mostrar solo la pregunta de cada actividad
+            ))}
+          </ul>
+        </div>
+
         <button type="submit" disabled={loading}>
           {loading ? "Guardando..." : "Guardar curso"}
         </button>

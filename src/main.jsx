@@ -14,6 +14,7 @@ import Comunity from "./components/Comunity.jsx";
 import Cursopg from "./pages/Curso/Cursopg.jsx";
 import Addcurso from "./pages/addcurso/Addcurso.jsx";
 import Panel from "./pages/panel/Panel.jsx";
+import ActividadScreen from "./pages/AcScreen/ActividadScreen.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -29,6 +30,7 @@ createRoot(document.getElementById("root")).render(
         <Route path="/account" element={<UserProfile />} />
         <Route path="/curso/:id" element={<Cursopg />} />
         <Route path="/curso/:id/temas" element={<Curso />} />
+        <Route path="/curso/:id/actividades" element={<ActividadScreen />} />
         <Route path="/curso/:id/panel" element={<Panel />} />
         <Route path="/new-course" element={<Addcurso />} />
       </Routes>

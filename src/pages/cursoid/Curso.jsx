@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import "./curso.css";
 import Navbar from "../../components/Navbar";
@@ -14,6 +14,8 @@ const Curso = () => {
   const [userId, setUserId] = useState(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const [progresoActualizado, setProgresoActualizado] = useState(false); // Estado para el botón
+
+  const navigate = useNavigate();
 
   // Obtener el usuario autenticado
   useEffect(() => {
@@ -97,17 +99,8 @@ const Curso = () => {
     }
   };
 
-  const handleProgresoClick = async () => {
-    try {
-      console.log(`Enviando userId: ${userId}, porcentaje: 10`); // Verifica el valor
-      await axios.post(
-        `https://api-backend-learnprog-p4pr.onrender.com/api/${id}/progreso`,
-        { userId, porcentaje: 10 }
-      );
-      setProgresoActualizado(true);
-    } catch (error) {
-      console.error("Error al actualizar el progreso:", error);
-    }
+  const handleActividad = async () => {
+    navigate(`/curso/${id}/actividades`);
   };
 
   if (!curso) return <p>Cargando...</p>;
@@ -150,15 +143,14 @@ const Curso = () => {
             Likes: {curso.likes}
           </button>
         </div>
-
         <div className="btnhecho">
           <button
             className={`progreso-button ${
               progresoActualizado ? "actualizado" : "no-actualizado"
             }`}
-            onClick={handleProgresoClick}
+            onClick={handleActividad}
           >
-            Hecho
+            Ir a actividad
           </button>
         </div>
 
