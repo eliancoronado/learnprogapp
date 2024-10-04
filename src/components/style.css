@@ -96,7 +96,7 @@
   width: 100%;
 }
 
-input {
+input,textarea {
   width: 100%;
   padding: 1.2rem 1rem;
   margin-bottom: 2vh;
@@ -117,7 +117,7 @@ input::placeholder {
   font-weight: 600;
 }
 
-input:focus {
+input:focus, textarea:focus {
   font-size: 2.4vh;
   font-family: "Poppins", sans-serif;
   color: #2D3235;
@@ -126,7 +126,8 @@ input:focus {
   outline: none;
 }
 
-input:valid {
+
+input:valid, textarea:valid {
   font-size: 2.3vh;
   font-family: "Poppins", sans-serif;
   color: #ffffff;

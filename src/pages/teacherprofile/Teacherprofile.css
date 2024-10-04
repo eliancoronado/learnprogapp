@@ -1,34 +1,54 @@
 @import url('https://fonts.googleapis.com/css2?family=Days+One&family=Fira+Code:wght@300..700&family=Lalezar&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
 /*Fuentes*/
 
 /*
     font-family: "Lalezar", system-ui;
     font-family: "Fira Code", monospace;
     font-family: "Days One", sans-serif;
+    font-family: "Poppins", sans-serif;
+    font-family: "JetBrains Mono", monospace;
 */
 
 /*CSS*/
 
 .tchrprfl {
     width: 100%;
-    height: 84vh;
-    max-height: 84vh;
+    height: 92vh;
+    max-height: 92vh;
     overflow: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 0 1rem;
-    background-color: white;
+    background-color: #101618;
 }
 
 .tchrprfl .tchrprfnb {
     width: 100%;
-    height: 5vh;
+    height: 8vh;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    font-size: 3.5vh;
+    color:white;
+}
+
+.tchrprfl .imgwrborder{
+    width: 200px;
+    height: 200px;
+    border-radius: 100%;
+    border: 2px solid #39C3B4;
+    padding: 10px;
+    margin-top: 2.5vh;
+}
+
+.tchrprfl .tchrprfnb p{
     font-size: 3vh;
-    margin-bottom: 1rem;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    color: white;
 }
 
 .tchrprfl .tchrprfnb a {
@@ -38,8 +58,8 @@
 }
 
 .tchrprfl .image {
-    width: 200px;
-    height: 200px;
+    width: 100%;
+    height: 100%;
     border-radius: 100%;
     object-fit: cover;
     transition: all .4s ease;
@@ -59,9 +79,9 @@
 
 .tchrprfl h1 {
     font-size: 3vh;
-    font-family: "Days One", sans-serif;
-    font-weight: 300;
-    letter-spacing: 1px;
+    font-family: "JetBrains Mono", monospace;
+    font-weight: 400;
+    color: white;
     margin-top: 1.5vh;
 }
 
@@ -74,11 +94,37 @@
 }
 
 .tchrprfl p {
-    font-size: 2vh;
-    font-family: "Days One", sans-serif;
-    font-weight: 300;
-    letter-spacing: 1px;
+    font-size: 2.2vh;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    color: white;
     margin-top: 1vh;
+}
+
+.tchrprfl .fajadecambio{
+    width: 100%;
+    height: 7vh;
+    border-radius: 10px;
+    background-color: #1E2426;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 2vh;
+}
+
+.tchrprfl .fajadecambio .fjdecmop{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    border-radius: 10px;
+    font-size: 2.5vh;
+    font-family: "Poppins", sans-serif;
+}
+
+.tchrprfl .fajadecambio .fjdecmop.active{
+    background: linear-gradient(#38BBD3 0%, #39C3B4 100%);
 }
 
 .tchrprfl button {
@@ -86,13 +132,21 @@
     padding: 0.7rem;
     border-radius: 8px;
     font-size: 2.5vh;
-    font-family: "Days One", sans-serif;
-    font-weight: 300;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
     letter-spacing: 1px;
     margin-top: 2vh;
     color: white;
     border: none;
-    background-color: rgb(233, 0, 0);
+    background: linear-gradient(#38BBD3 0%, #39C3B4 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.iconbtn{
+    font-size: 3vh;
 }
 
 .teacher-courses {
@@ -116,6 +170,13 @@
     border-radius: 10px;
 }
 
+.teacher-courses p{
+    font-size: 3vh;
+    font-family: "JetBrains Mono", monospace;
+    font-weight: 400;
+    color: white;
+}
+
 .loader {
     position: absolute;
     top: 50%;
@@ -135,3 +196,7 @@
     100% { transform: rotate(360deg); }
   }
   
+
+.editinglayout{
+    margin-top: 2vh;
+}

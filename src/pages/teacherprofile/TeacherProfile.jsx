@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "./Teacherprofile.css";
-import Navbar from "../../components/Navbar";
 import FootBar from "../../components/FootBar";
-import { FaArrowLeftLong } from "react-icons/fa6";
+import { FaArrowLeftLong, FaAngleLeft } from "react-icons/fa6";
 
 const TeacherProfile = () => {
   const { id } = useParams(); // Obtener el ID de la URL
@@ -50,26 +49,29 @@ const TeacherProfile = () => {
 
   return (
     <>
-      <Navbar />
       <div className="tchrprfl">
         <div className="tchrprfnb">
           <a href="/teachers">
-            <FaArrowLeftLong />
+            <FaAngleLeft />
           </a>
+          <p>Perfil del profesor</p>
+          <span></span>
         </div>
-        <img
-          src={
-            teacher.profileImageUrl
-              ? teacher.profileImageUrl
-              : "/images/default-profile.png"
-          }
-          alt={teacher.username}
-          className={Imgage ? "image active" : "image"}
-          onClick={toggleSidebar}
-        />
+        <div className="imgwrborder">
+          <img
+            src={teacher.profileImageUrl}
+            alt={teacher.username}
+            className={Imgage ? "image active" : "image"}
+            onClick={toggleSidebar}
+          />
+        </div>
         <h1>{teacher.username}</h1>
         <p>{teacher.email}</p>
-        <h2>Cursos impartidos por {teacher.username}</h2>
+        <div className="fajadecambio">
+          <div className="fjdecmop">Acerca</div>
+          <div className="fjdecmop active">Cursos</div>
+          <div className="fjdecmop">Reviews</div>
+        </div>
 
         <div className="teacher-courses">
           {cursos.length > 0 ? (

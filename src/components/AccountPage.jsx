@@ -4,7 +4,11 @@ import axios from "axios";
 import Navbar from "./Navbar";
 import FootBar from "./FootBar";
 import "../pages/teacherprofile/Teacherprofile.css";
-import { FaArrowLeftLong } from "react-icons/fa6";
+import { FaArrowLeftLong, FaAngleLeft } from "react-icons/fa6";
+import { IoIosAddCircleOutline } from "react-icons/io";
+import { FaEdit, FaSave } from "react-icons/fa";
+import { ImCancelCircle } from "react-icons/im";
+import { RiLogoutBoxLine } from "react-icons/ri";
 import Loader from "./Loader";
 
 const UserProfile = () => {
@@ -97,47 +101,69 @@ const UserProfile = () => {
 
   return (
     <>
-      <Navbar />
       <div className="tchrprfl">
         <div className="tchrprfnb">
           <a href="/home">
-            <FaArrowLeftLong />
+            <FaAngleLeft />
           </a>
+          <p>Perfil de Usuario</p>
+          <span></span>
         </div>
-        <img
-          src={user.profileImageUrl}
-          alt="Profile"
-          className={Imgage ? "image active" : "image"}
-          onClick={toggleSidebar}
-        />
+        <div className="imgwrborder">
+          <img
+            src={user.profileImageUrl}
+            alt="Profile"
+            className={Imgage ? "image active" : "image"}
+            onClick={toggleSidebar}
+          />
+        </div>
 
         {isEditing ? (
-          <>
+          <div className="editinglayout">
             <input
               type="text"
               value={updatedName}
               onChange={(e) => setUpdatedName(e.target.value)}
             />
             <input type="file" onChange={handleFileChange} />
-            <button onClick={handleSaveProfile}>Guardar Cambios</button>
+            <button onClick={handleSaveProfile}>
+              <FaSave />
+              Guardar Cambios
+            </button>
+            <button
+              onClick={() => {
+                setIsEditing(false);
+              }}
+            >
+              <ImCancelCircle />
+              Cancelar
+            </button>
             {loading && <div className="loader"></div>} {/* Loader */}
-          </>
+          </div>
         ) : (
           <>
             <h1>{user.username}</h1>
-            <p>Correo: {user.email}</p>
-            <p>Rol: {rol === "teacher" ? "Profesor" : "Estudiante"}</p>
+            <p>{user.email}</p>
+            <p>{rol === "teacher" ? "Profesor" : "Estudiante"}</p>
             {/* Mostrar botón adicional si el rol es 'teacher' */}
             {rol === "teacher" && (
               <button onClick={() => navigate("/new-course")}>
+                <IoIosAddCircleOutline className="iconbtn" />
                 Nuevo curso
               </button>
             )}
-            <button onClick={handleEditProfile}>Editar Perfil</button>
+            <button onClick={handleEditProfile}>
+              {" "}
+              <FaEdit />
+              Editar Perfil
+            </button>
           </>
         )}
 
-        <button onClick={handleLogout}>Cerrar Sesión</button>
+        <button onClick={handleLogout}>
+          <RiLogoutBoxLine />
+          Cerrar Sesión
+        </button>
       </div>
       <FootBar />
     </>

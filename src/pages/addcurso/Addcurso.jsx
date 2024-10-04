@@ -20,6 +20,8 @@ const Addcurso = () => {
   const [activityOptions, setActivityOptions] = useState(["", "", "", ""]); // Estado para las opciones
   const [correctAnswer, setCorrectAnswer] = useState(""); // Estado para la respuesta correcta
   const [loading, setLoading] = useState(false);
+  const [isFilled, setIsFilled] = useState(false); // Estado para verificar si los inputs están llenos
+  const [isFilledtema, setIsFilledtema] = useState(false); // Estado para verificar si los inputs están llenos
 
   const navigate = useNavigate();
 
@@ -51,6 +53,20 @@ const Addcurso = () => {
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+
+  useEffect(() => {
+    // Verificar si ambos campos están llenos
+    if (
+      formData.titulo &&
+      formData.instructor &&
+      formData.video_url &&
+      formData.descripcion
+    ) {
+      setIsFilled(true);
+    } else {
+      setIsFilled(false);
+    }
+  }, [formData]); // Ejecutar cada vez que formData cambie
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
@@ -132,6 +148,16 @@ const Addcurso = () => {
   return (
     <div className="addcoursepage">
       <form onSubmit={handleSubmit}>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="50%"
+          viewBox="0 0 24 24"
+          style={{ fill: "rgba(50, 189, 199, 1)", transform: "", msFilter: "" }} // Cambiar a objeto
+        >
+          <path d="M2 7v1l11 4 9-4V7L11 4z"></path>
+          <path d="M4 11v4.267c0 1.621 4.001 3.893 9 3.734 4-.126 6.586-1.972 7-3.467.024-.089.037-.178.037-.268V11L13 14l-5-1.667v3.213l-1-.364V12l-3-1z"></path>
+        </svg>
+
         <h2>Agregar Nuevo Curso</h2>
         <div>
           <label>Título</label>
@@ -140,6 +166,7 @@ const Addcurso = () => {
             name="titulo"
             value={formData.titulo}
             onChange={handleChange}
+            placeholder="Tiulo del curso"
             required
           />
         </div>
@@ -160,6 +187,7 @@ const Addcurso = () => {
             name="video_url"
             value={formData.video_url}
             onChange={handleChange}
+            placeholder="ej: https://youtu.be/embed/id-de-tu-video"
             required
           />
         </div>
@@ -185,7 +213,11 @@ const Addcurso = () => {
             onChange={(e) => setSyllabusInput(e.target.value)}
             placeholder="Agregar tema al syllabus"
           />
-          <button type="button" onClick={addSyllabusItem}>
+          <button
+            type="button"
+            onClick={addSyllabusItem}
+            style={{ backgroundColor: "#38BDC7" }}
+          >
             Añadir Tema
           </button>
         </div>
@@ -234,7 +266,11 @@ const Addcurso = () => {
               placeholder="Escribe la respuesta correcta"
             />
           </div>
-          <button type="button" onClick={addActivityItem}>
+          <button
+            type="button"
+            onClick={addActivityItem}
+            style={{ backgroundColor: "#38BDC7" }}
+          >
             Añadir Actividad
           </button>
         </div>
@@ -249,7 +285,11 @@ const Addcurso = () => {
           </ul>
         </div>
 
-        <button type="submit" disabled={loading}>
+        <button
+          type="submit"
+          disabled={loading}
+          style={{ backgroundColor: isFilled ? "#38BDC7" : "#1E2426" }}
+        >
           {loading ? "Guardando..." : "Guardar curso"}
         </button>
       </form>

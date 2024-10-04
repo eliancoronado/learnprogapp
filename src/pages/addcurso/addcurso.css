@@ -14,17 +14,19 @@
 .addcoursepage{
     width: 100%;
     height: 100vh;
-    background-color: #111b22;
-    padding: 1rem 1rem;
+    background-color: #101618;
+    padding: 2rem 1.2rem;
     color: white;
     max-height: 100vh;
     overflow: auto;
+
 }
 
 .addcoursepage form{
     width: 100%;
-    padding: 1rem 1rem;
-    background-color: #1b2832;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     border-radius: 15px;
 }
 
@@ -32,10 +34,11 @@
     font-size: 3vh;text-align: center;
     font-weight: 600;
     font-family: "Poppins", sans-serif;
-    margin-bottom: 2vh;
+    margin-bottom: 4vh;
 }
 
 .addcoursepage form div{
+    width: 100%;
     display: flex;
     flex-direction: column;
     margin-bottom: 1.5vh;
@@ -60,46 +63,32 @@
     margin: 2.5vh 0;
 }
 
-.addcoursepage form div input, textarea{
-    font-size: 2.2vh;
-    font-weight: 600;
-    font-family: "Poppins", sans-serif;
-    color: black;
-    padding-left: 10px;
-    border-radius: 8px;
-}
-
-.addcoursepage form div input[type="file"]{
-    font-size: 2.2vh;
-    font-weight: 600;
-    font-family: "Poppins", sans-serif;
-    color: rgb(255, 255, 255);
-    padding-left: 10px;
-    border-radius: 8px;
-}
-
-.addcoursepage form div button[type="button"]{
-    font-size: 2.2vh;
-    font-weight: 600;
-    font-family: "Poppins", sans-serif;
-    color: rgb(255, 255, 255);
-    padding-left: 10px;
-    border-radius: 8px;
+.addcoursepage div button{
     width: 100%;
+    padding: 1rem 0;
     border: none;
-    padding: 0.7rem 0;
-    background-color: #35a9fd;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 2.4vh;
+    font-family: "Poppins", sans-serif;
+    color: #fff;
+    font-weight: 600;
+    margin-top: 2vh;
+    margin-bottom: 1vh;
 }
 
-.addcoursepage form button[type="submit"]{
-    font-size: 2.2vh;
-    font-weight: 600;
-    font-family: "Poppins", sans-serif;
-    color: rgb(255, 255, 255);
-    padding-left: 10px;
-    border-radius: 8px;
+.addcoursepage form button{
     width: 100%;
+    padding: 1rem 0;
     border: none;
-    padding: 0.7rem 0;
-    background-color: #35a9fd;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 2.4vh;
+    font-family: "Poppins", sans-serif;
+    color: #fff;
+    font-weight: 600;
+    margin-top: 2vh;
+    margin-bottom: 1vh;
 }
