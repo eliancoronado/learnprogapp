@@ -1,10 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Days+One&family=Fira+Code:wght@300..700&family=Lalezar&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
 /*Fuentes*/
 
 /*
     font-family: "Lalezar", system-ui;
     font-family: "Fira Code", monospace;
     font-family: "Days One", sans-serif;
+    font-family: "Poppins", sans-serif;
+    font-family: "JetBrains Mono", monospace;
 */
 
 /*CSS*/
@@ -12,35 +16,42 @@
 .rgsterpage{
   width: 100%;
   height: 100vh;
-  background-color: #111b22;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 1rem;
+  background-color: #101618;
+  padding: 2rem 1.2rem;
   position: relative;
+  max-height: 100vh;
+  overflow: auto;
 }
 
 .rgsterpage form {
-  background-color: #1b2832;
-  padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   width: 100%;
   max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.rgsterpage form span {
+  color: #2D3235;
+  background-color: #2D3235;
+  margin-bottom: 5vh;
+  margin-top: 2vh;
+  height: 2px;
+  width: 100%;
 }
 
 .rgsterpage form h1{
-  font-size: 3.8vh;
-  font-family: "Lalezar", system-ui;
+  font-size: 5vh;
+  font-family: "JetBrains Mono", monospace;
   color: white;
-  font-weight: 600;
-  letter-spacing: 1.5px;
-  margin-bottom: 2.4vh;
+  font-weight: 800;
+  letter-spacing: 1px;
+  margin-bottom: 2.8vh;
 }
 
 .rgsterpage form h3{
   font-size: 3.8vh;
-  font-family: "Lalezar", system-ui;
+  font-family: "Poppins", sans-serif;
   color: white;
   font-weight: 600;
   letter-spacing: 1.5px;
@@ -51,10 +62,9 @@
 
 .rgsterpage form p{
   font-size: 2vh;
-  font-family: "Lalezar", system-ui;
+  font-family: "JetBrains Mono", monospace;
   color: white;
   font-weight: 500;
-  letter-spacing: 1.5px;
   margin-top: 1.5vh;
   align-self: center;
   text-align: center;
@@ -82,46 +92,66 @@
   letter-spacing: 1.2px;
 }
 
+.rgsterpage form div{
+  width: 100%;
+}
+
 input {
   width: 100%;
-  padding: 0.75rem;
-  margin-bottom: 1rem;
+  padding: 1.2rem 1rem;
+  margin-bottom: 2vh;
   margin-top: 1vh;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  font-size: 1rem;
+  border: 1.5px solid #2D3235;
+  border-radius: 15px;
   transition: border-color 0.3s;
-  color: black;
-  font-size: 2vh;
-  font-family: Arial, Helvetica, sans-serif;
+  color: #ffffff;
+  font-size: 2.4vh;
+  font-family: "Poppins", sans-serif;
+  background-color: #101618;
+}
+
+input::placeholder {
+  font-size: 2.4vh;
+  font-family: "Poppins", sans-serif;
+  color: #2D3235;
+  font-weight: 600;
+}
+
+input:focus {
+  font-size: 2.4vh;
+  font-family: "Poppins", sans-serif;
+  color: #2D3235;
+  font-weight: 600;
+  border: 1.5px solid #42A5F5;
+  outline: none;
+}
+
+input:valid {
+  font-size: 2.3vh;
+  font-family: "Poppins", sans-serif;
+  color: #ffffff;
+  font-weight: 600;
+  border: 1.5px solid #42A5F5;
+  outline: none;
 }
 
 input[type="file"] {
   color: white;
 }
 
-input:focus {
-  border-color: #007bff;
-  outline: none;
-}
-
 .rgsterpage form button {
   width: 100%;
-  padding: 0.75rem;
-  background-color: #007bff;
+  padding: 1rem 0;
   border: none;
-  border-radius: 5px;
+  border-radius: 15px;
   cursor: pointer;
   transition: background-color 0.3s;
-  font-size: 2vh;
-  font-weight: 500;
-  color: #ffffff;
-  font-family: "Days One", sans-serif;
-  letter-spacing: 1.2px;
-}
-
-button:hover {
-  background-color: #0056b3;
+  font-size: 2.4vh;
+  font-family: "Poppins", sans-serif;
+  color: #fff;
+  font-weight: 600;
+  margin-top: 2vh;
+  margin-bottom: 1vh;
 }
 
 .file-input {
