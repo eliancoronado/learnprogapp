@@ -24,7 +24,7 @@ const Home = () => {
         </h4>
         <h5>En LearnProg lo celebramos contigo</h5>
         <CountdownTimer targetDate={targetDate} />
-        <a href="/courses">
+        <a href="/homepage">
           <button type="button">
             Ir a mi cuenta <FaAngleRight />
           </button>

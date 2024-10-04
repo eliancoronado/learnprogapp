@@ -41,7 +41,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: 10px;
     margin-top: 2vh;
 }
 
@@ -56,4 +56,10 @@
 
 .curso-item p{
     margin-top: 1.5vh;
+}
+
+.curso-item h3{
+    margin-top: 1.5vh;
+    font-size: 2vh;
+    font-family: "Poppins", sans-serif;
 }

@@ -15,6 +15,7 @@ import Cursopg from "./pages/Curso/Cursopg.jsx";
 import Addcurso from "./pages/addcurso/Addcurso.jsx";
 import Panel from "./pages/panel/Panel.jsx";
 import ActividadScreen from "./pages/AcScreen/ActividadScreen.jsx";
+import Homepage from "./pages/homepage/Homepage.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -23,6 +24,7 @@ createRoot(document.getElementById("root")).render(
         <Route path="/" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/home" element={<App />} />
+        <Route path="/homepage" element={<Homepage />} />
         <Route path="/courses" element={<CursoPage />} />
         <Route path="/teachers" element={<Teachers />} />
         <Route path="/comunity" element={<Comunity />} />

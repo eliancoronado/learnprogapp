@@ -9,6 +9,7 @@ import {
   FaGrip,
   FaBorderAll,
 } from "react-icons/fa6";
+import { RiHome5Line } from "react-icons/ri";
 import "./Footerbar.css";
 
 const FootBar = () => {
@@ -51,6 +52,12 @@ const FootBar = () => {
   return (
     <>
       <div className="footerbar">
+        <a href="/homepage">
+          <div className={`fboption ${isActive("/homepage")}`}>
+            <RiHome5Line className="i" />
+            Inicio
+          </div>
+        </a>
         <a href="/courses">
           <div className={`fboption ${isActive("/courses")}`}>
             <FaBorderAll className="i" />
@@ -63,10 +70,12 @@ const FootBar = () => {
             Comunidad
           </div>
         </a>
+        {/*
         <div className="fboption" onClick={() => setSearch(true)}>
           <FaSistrix className="i" />
           Buscar
         </div>
+        */}
         <div className={`fboption ${isActive("/blog")}`}>
           <FaFile className="i" />
           Blog

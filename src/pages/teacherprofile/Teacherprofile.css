@@ -183,7 +183,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     border: 8px solid #f3f3f3; /* Color de fondo */
-    border-top: 8px solid #3498db; /* Color de la parte superior */
+    border-top: 8px solid #39C3B4; /* Color de la parte superior */
     border-radius: 50%; /* Hace que sea redondo */
     width: 50px; /* Ancho del spinner */
     height: 50px; /* Alto del spinner */

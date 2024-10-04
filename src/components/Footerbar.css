@@ -22,19 +22,6 @@
     border-top: 1px solid #253541;
 }
 
-.fboption{
-    width: 100%;
-    height: 100%;
-    font-size: 1.4vh;
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
-    font-weight: 300;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-}
 
 .fboption{
     width: 100%;
@@ -59,7 +46,7 @@
     font-family: "Poppins", sans-serif;
     letter-spacing: 0.7px;
     font-weight: 400;
-    color: #35a9fd;
+    color: #39C3B4;
     display: flex;
     flex-direction: column;
     align-items: center;

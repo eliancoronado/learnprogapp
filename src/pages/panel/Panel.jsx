@@ -72,6 +72,8 @@ const Panel = () => {
               <div className="estudianteinfo">
                 <h4>{estudianteObj.username}</h4>
                 <p>{estudianteObj.email}</p>
+                {/* Mostrar el porcentaje completado */}
+                <p>Progreso: {estudianteObj.porcentajeCompletado}%</p>
               </div>
             </div>
           ))

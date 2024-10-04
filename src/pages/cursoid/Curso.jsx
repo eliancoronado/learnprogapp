@@ -4,16 +4,19 @@ import axios from "axios";
 import "./curso.css";
 import Navbar from "../../components/Navbar";
 import FootBar from "../../components/FootBar";
-import { FaEye } from "react-icons/fa6";
+import { FaEye, FaAngleRight } from "react-icons/fa6";
+import { AiOutlineLike } from "react-icons/ai";
+import { BsPlayBtnFill } from "react-icons/bs";
 
 const Curso = () => {
   const { id } = useParams();
   const [curso, setCurso] = useState(null);
+  const [user, setUser] = useState(null);
   const [teacherimg, setTeacherimg] = useState(null);
   const [haDadoLike, setHaDadoLike] = useState(false);
   const [userId, setUserId] = useState(null);
   const [activeIndex, setActiveIndex] = useState(0);
-  const [progresoActualizado, setProgresoActualizado] = useState(false); // Estado para el botón
+  const [progreso, setProgreso] = useState(false); // Estado para el progreso
 
   const navigate = useNavigate();
 
@@ -27,6 +30,8 @@ const Curso = () => {
             `https://api-backend-learnprog-p4pr.onrender.com/api/usuarioinfo/${storedUser.email}`
           );
           setUserId(response.data._id);
+          setUser(response.data);
+          console.log("el usuario id es ", response.data._id);
         } catch (error) {
           console.error("Error al obtener los datos del usuario:", error);
         }
@@ -43,28 +48,20 @@ const Curso = () => {
         const response = await axios.get(
           `https://api-backend-learnprog-p4pr.onrender.com/api/cursos/${id}`
         );
-        setCurso(response.data);
+        const cursoData = response.data;
+        setCurso(cursoData);
 
         if (response.data.usuariosLikes.includes(userId)) {
           setHaDadoLike(true);
         }
+
+        // Verificar si la propiedad estudiantesMatriculados existe y tiene datos
       } catch (error) {
         console.error("Error al obtener los datos del curso:", error);
       }
     };
 
-    const aumentarVistas = async () => {
-      try {
-        await axios.post(
-          `https://api-backend-learnprog-p4pr.onrender.com/api/cursos/${id}/vistas`
-        );
-      } catch (error) {
-        console.error("Error al aumentar las vistas:", error);
-      }
-    };
-
     fetchCurso();
-    aumentarVistas();
   }, [id, userId]);
 
   // Obtener la imagen del instructor
@@ -103,15 +100,56 @@ const Curso = () => {
     navigate(`/curso/${id}/actividades`);
   };
 
-  if (!curso) return <p>Cargando...</p>;
-
   const handleTemarioClick = (index) => {
     setActiveIndex(index);
   };
 
+  useEffect(() => {
+    if (user && user._id) {
+      // Realizar la solicitud para obtener los cursos en los que el usuario está matriculado
+      axios
+        .get(
+          `https://api-backend-learnprog-p4pr.onrender.com/api/matriculados/${user._id}`
+        )
+        .then((response) => {
+          const progressdata = response.data;
+          console.log("Respuesta de la API:", progressdata); // Para depurar
+
+          // Verifica si progressdata es un arreglo
+          if (Array.isArray(progressdata) && progressdata.length > 0) {
+            const estudianteMatriculado =
+              progressdata[0].estudiantesMatriculados.find(
+                (est) => est.estudiante.toString() === user._id
+              );
+
+            // Si el estudiante está matriculado, verificar el progreso
+            if (estudianteMatriculado) {
+              const progresoEstudiante =
+                estudianteMatriculado.porcentajeCompletado;
+              console.log("Progreso del estudiante:", progresoEstudiante);
+              if (progresoEstudiante > 0) {
+                setProgreso(true);
+              } else {
+                setProgreso(false);
+              }
+            }
+          } else {
+            console.error(
+              "La propiedad estudiantesMatriculados no es un arreglo o está indefinida."
+            );
+          }
+          console.log("Estudiantes matriculados:", progressdata);
+        })
+        .catch((error) => {
+          console.error("Error al obtener los cursos matriculados:", error);
+        });
+    }
+  }, [user]); // Ejecutar cuando `user` cambie
+
+  if (!curso) return <div className="loader"></div>;
+
   return (
     <>
-      <Navbar />
       <div className="curso">
         <div className="curso-video">
           <iframe
@@ -140,17 +178,17 @@ const Curso = () => {
             className={`like-button ${haDadoLike ? "liked" : "noliked"}`}
             onClick={handleLike}
           >
-            Likes: {curso.likes}
+            <AiOutlineLike className="itmop2" />
+            {curso.likes}
           </button>
         </div>
         <div className="btnhecho">
           <button
-            className={`progreso-button ${
-              progresoActualizado ? "actualizado" : "no-actualizado"
-            }`}
-            onClick={handleActividad}
+            className={`progreso-button`}
+            onClick={progreso ? null : handleActividad} // Evita llamar a handleActividad si progreso es true
+            disabled={progreso} // Deshabilitar el botón si progreso es true
           >
-            Ir a actividad
+            {progreso ? "Ya se realizó la actividad" : "Ir a la actividad"}
           </button>
         </div>
 
@@ -169,6 +207,7 @@ const Curso = () => {
                 onClick={() => handleTemarioClick(index)}
               >
                 {tema}
+                <FaAngleRight className="itmop2" />
               </div>
             ))}
           </div>
