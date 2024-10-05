@@ -139,6 +139,7 @@ const Comunity = () => {
         {isModalOpen && (
           <div className="modaltopost">
             <form onSubmit={handleSubmit}>
+              <h2>Crear un post</h2>
               <input
                 type="text"
                 placeholder="Título"
@@ -156,10 +157,16 @@ const Comunity = () => {
                 }
                 required
               />
-              <button type="submit">Publicar</button>
-              <button type="button" onClick={() => setModalOpen(false)}>
-                Cerrar
-              </button>
+              <div className="mdtpbtns">
+                <button
+                  type="button"
+                  onClick={() => setModalOpen(false)}
+                  style={{ backgroundColor: "#DB4A4A" }}
+                >
+                  Cerrar
+                </button>
+                <button type="submit">Publicar</button>
+              </div>
             </form>
           </div>
         )}
