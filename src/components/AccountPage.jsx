@@ -19,6 +19,7 @@ const UserProfile = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [updatedName, setUpdatedName] = useState("");
   const [updatedImage, setUpdatedImage] = useState(null);
+  const [updatedesc, setUpdateDesc] = useState(null);
   const [loading, setLoading] = useState(false); // Estado del loader
 
   const toggleSidebar = () => {
@@ -37,6 +38,7 @@ const UserProfile = () => {
           const userData = response.data;
           setUser(userData);
           setUpdatedName(userData.username);
+          setUpdateDesc(userData.descripcion);
           setRol(storedUser.role); // Almacenar el rol del usuario obtenido desde la API
         } catch (error) {
           console.error("Error al obtener los datos del usuario:", error);
@@ -64,6 +66,7 @@ const UserProfile = () => {
   const handleSaveProfile = async () => {
     const formData = new FormData();
     formData.append("username", updatedName);
+    formData.append("descripcion", updatedesc);
     if (updatedImage) {
       formData.append("profileImage", updatedImage);
     }
@@ -125,6 +128,11 @@ const UserProfile = () => {
               value={updatedName}
               onChange={(e) => setUpdatedName(e.target.value)}
             />
+            <input
+              type="text"
+              value={updatedesc}
+              onChange={(e) => setUpdateDesc(e.target.value)}
+            />
             <input type="file" onChange={handleFileChange} />
             <button onClick={handleSaveProfile}>
               <FaSave />
@@ -145,6 +153,15 @@ const UserProfile = () => {
             <h1>{user.username}</h1>
             <p>{user.email}</p>
             <p>{rol === "teacher" ? "Profesor" : "Estudiante"}</p>
+            <>
+              {user.descripcion ? (
+                <>
+                  <p>{user.descripcion}</p>
+                </>
+              ) : (
+                <p>Hola estoy usando LearnProg </p>
+              )}
+            </>
             {/* Mostrar botón adicional si el rol es 'teacher' */}
             {rol === "teacher" && (
               <button onClick={() => navigate("/new-course")}>

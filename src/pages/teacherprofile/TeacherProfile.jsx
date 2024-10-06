@@ -9,6 +9,7 @@ const TeacherProfile = () => {
   const [teacher, setTeacher] = useState(null);
   const [cursos, setCursos] = useState([]); // Estado para almacenar los cursos
   const [Imgage, setImage] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(1); // Puedes cambiar 1 por el índice que prefieras
 
   const toggleSidebar = () => {
     setImage((prevSidebar) => !prevSidebar);
@@ -43,6 +44,10 @@ const TeacherProfile = () => {
     fetchCursos();
   }, [id]);
 
+  const handleClick = (index) => {
+    setActiveIndex(index);
+  };
+
   if (!teacher) {
     return <div>Cargando...</div>;
   }
@@ -68,24 +73,57 @@ const TeacherProfile = () => {
         <h1>{teacher.username}</h1>
         <p>{teacher.email}</p>
         <div className="fajadecambio">
-          <div className="fjdecmop">Acerca</div>
-          <div className="fjdecmop active">Cursos</div>
-          <div className="fjdecmop">Reviews</div>
+          <div
+            className={`fjdecmop ${activeIndex === 0 ? "active" : ""}`}
+            onClick={() => handleClick(0)}
+          >
+            Acerca
+          </div>
+          <div
+            className={`fjdecmop ${activeIndex === 1 ? "active" : ""}`}
+            onClick={() => handleClick(1)}
+          >
+            Cursos
+          </div>
+          <div
+            className={`fjdecmop ${activeIndex === 2 ? "active" : ""}`}
+            onClick={() => handleClick(2)}
+          >
+            Reviews
+          </div>
         </div>
 
-        <div className="teacher-courses">
-          {cursos.length > 0 ? (
-            <>
-              {cursos.map((curso) => (
-                <a key={curso._id} href={`/curso/${curso._id}`}>
-                  <img key={curso._id} src={curso.image_url} />
-                </a>
-              ))}
-            </>
-          ) : (
-            <p>Este profesor no tiene cursos registrados.</p>
-          )}
-        </div>
+        {activeIndex === 1 && (
+          <div className="teacher-courses">
+            {cursos.length > 0 ? (
+              <>
+                {cursos.map((curso) => (
+                  <a key={curso._id} href={`/curso/${curso._id}`}>
+                    <img
+                      key={curso._id}
+                      src={curso.image_url}
+                      alt={curso.name}
+                    />
+                  </a>
+                ))}
+              </>
+            ) : (
+              <p>Este profesor no tiene cursos registrados.</p>
+            )}
+          </div>
+        )}
+
+        {activeIndex === 0 && (
+          <div className="descripcion-teacherprofile">
+            {teacher.descripcion ? (
+              <>
+                <p>{teacher.descripcion}</p>
+              </>
+            ) : (
+              <p>Hola estoy usando LearnProg</p>
+            )}
+          </div>
+        )}
       </div>
 
       {/* Renderizar los cursos del profesor */}
