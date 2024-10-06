@@ -36,10 +36,8 @@ const Teacherspage = () => {
                   }
                   alt={user.username ? user.username : "Profesor"}
                 />
-                <h3>
-                  {user.username ? user.username : "Nombre no disponible"}
-                </h3>
               </div>
+              <h3>{user.username ? user.username : "Nombre no disponible"}</h3>
             </a>
           ))}
         </div>

@@ -1,22 +1,35 @@
-import React, { useEffect, useState } from "react";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import Dashboard from "./pages/dashpanel/Dashboard";
 import Home from "./sections/home/Home";
 import NCourses from "./sections/NewCourses/NCourses";
 import Cursosacc from "./sections/cursosaccedidos/Cursosacc";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 function App() {
   // Estado para almacenar el rol del usuario
-  const [role, setRole] = useState(null);
+  const [rol, setRol] = useState(null);
 
   useEffect(() => {
-    // Verificar el rol del usuario en localStorage al cargar el componente
     const storedUser = JSON.parse(localStorage.getItem("user"));
-    if (storedUser && storedUser.role) {
-      setRole(storedUser.role); // Almacenar el rol en el estado
+
+    if (storedUser && storedUser.email) {
+      const fetchUsuario = async () => {
+        try {
+          const response = await axios.get(
+            `https://api-backend-learnprog-p4pr.onrender.com/api/usuarioinfo/${storedUser.email}`
+          );
+          const userData = response.data;
+          setRol(userData.role); // Almacenar el rol del usuario obtenido desde la API
+        } catch (error) {
+          console.error("Error al obtener los datos del usuario:", error);
+        }
+      };
+
+      fetchUsuario();
     }
-  }, []); // Solo se ejecuta una vez al cargar el componente
+  }, []);
 
   return (
     <>
@@ -24,8 +37,7 @@ function App() {
       <div className="wr">
         <Home />
         {/* Mostrar el Dashboard solo si el rol es 'teacher' */}
-        {role === "teacher" && <Dashboard />}
-        {role !== "teacher" && <Cursosacc />}
+        {rol === "teacher" && <Dashboard />}
         <NCourses />
       </div>
     </>

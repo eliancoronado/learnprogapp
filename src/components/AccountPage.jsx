@@ -39,7 +39,7 @@ const UserProfile = () => {
           setUser(userData);
           setUpdatedName(userData.username);
           setUpdateDesc(userData.descripcion);
-          setRol(storedUser.role); // Almacenar el rol del usuario obtenido desde la API
+          setRol(userData.role); // Almacenar el rol del usuario obtenido desde la API
         } catch (error) {
           console.error("Error al obtener los datos del usuario:", error);
         }
