@@ -185,7 +185,7 @@ const Addcurso = () => {
           <label>Syllabus Actual:</label>
           <ul>
             {formData.syllabus.map((tema, index) => (
-              <li key={index}>{tema.tema}</li>
+              <li key={index}>{tema.titulo}</li>
             ))}
           </ul>
         </div>

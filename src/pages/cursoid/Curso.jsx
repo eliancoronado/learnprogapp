@@ -54,6 +54,7 @@ const Curso = () => {
         if (response.data.usuariosLikes.includes(userId)) {
           setHaDadoLike(true);
         }
+        console.log(cursoData);
 
         // Verificar si la propiedad estudiantesMatriculados existe y tiene datos
       } catch (error) {
@@ -96,8 +97,23 @@ const Curso = () => {
     }
   };
 
-  const handleActividad = async () => {
-    navigate(`/curso/${id}/actividades`);
+  useEffect(() => {
+    const aumentarVistas = async () => {
+      try {
+        const aumentar = await axios.post(
+          `https://api-backend-learnprog-p4pr.onrender.com/api/cursos/${id}/vistas`
+        );
+        console.log(aumentar);
+      } catch (error) {
+        console.log("Error al aumentar las vistas", error);
+      }
+    };
+
+    aumentarVistas();
+  }, [id]);
+
+  const handleActividad = async (index) => {
+    navigate(`/curso/${id}/actividades/${index}`); // Navega a las actividades del tema activo
   };
 
   const handleTemarioClick = (index) => {
@@ -155,15 +171,15 @@ const Curso = () => {
           <iframe
             width="100%"
             height="250px"
-            src={curso.video_url}
             frameBorder="0"
             allowFullScreen
+            src={curso.syllabus[activeIndex].video_url}
             title={curso.titulo}
           ></iframe>
         </div>
         <h2>{curso.titulo}</h2>
         <div className="contenido">
-          <p>{curso.syllabus[activeIndex]}</p>
+          <p>{curso.syllabus[activeIndex].titulo}</p>
         </div>
         <div className="views">
           <FaEye />
@@ -185,7 +201,7 @@ const Curso = () => {
         <div className="btnhecho">
           <button
             className={`progreso-button`}
-            onClick={progreso ? null : handleActividad} // Evita llamar a handleActividad si progreso es true
+            onClick={progreso ? null : () => handleActividad(activeIndex)} // Pasa el índice activo aquí
             disabled={progreso} // Deshabilitar el botón si progreso es true
           >
             {progreso ? "Ya se realizó la actividad" : "Ir a la actividad"}
@@ -206,7 +222,7 @@ const Curso = () => {
                 className={`tmop ${index === activeIndex ? "active" : ""}`}
                 onClick={() => handleTemarioClick(index)}
               >
-                {tema}
+                {tema.titulo}
                 <FaAngleRight className="itmop2" />
               </div>
             ))}

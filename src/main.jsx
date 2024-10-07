@@ -32,7 +32,10 @@ createRoot(document.getElementById("root")).render(
         <Route path="/account" element={<UserProfile />} />
         <Route path="/curso/:id" element={<Cursopg />} />
         <Route path="/curso/:id/temas" element={<Curso />} />
-        <Route path="/curso/:id/actividades" element={<ActividadScreen />} />
+        <Route
+          path="/curso/:id/actividades/:index"
+          element={<ActividadScreen />}
+        />
         <Route path="/curso/:id/panel" element={<Panel />} />
         <Route path="/new-course" element={<Addcurso />} />
       </Routes>
