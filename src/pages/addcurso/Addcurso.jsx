@@ -63,7 +63,7 @@ const Addcurso = () => {
   const addSyllabusItem = () => {
     if (currentTema.trim() !== "" && videoUrl.trim() !== "") {
       const newSyllabusItem = {
-        tema: currentTema,
+        titulo: currentTema,
         video_url: videoUrl,
         activities,
       };
