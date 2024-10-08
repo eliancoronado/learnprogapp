@@ -143,11 +143,6 @@ const Curso = () => {
               const progresoEstudiante =
                 estudianteMatriculado.porcentajeCompletado;
               console.log("Progreso del estudiante:", progresoEstudiante);
-              if (progresoEstudiante > 0) {
-                setProgreso(true);
-              } else {
-                setProgreso(false);
-              }
             }
           } else {
             console.error(
